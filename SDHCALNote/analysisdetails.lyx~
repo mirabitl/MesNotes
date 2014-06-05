@@ -1,0 +1,370 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Analysis of 2012 Beamtest 
+\end_layout
+
+\begin_layout Section
+Event selection
+\end_layout
+
+\begin_layout Subsection
+Time analysis
+\end_layout
+
+\begin_layout Subsection
+Seed Analysis
+\end_layout
+
+\begin_layout Subsubsection
+Hits tagging
+\end_layout
+
+\begin_layout Standard
+Hits are separated in 3 categories:
+\end_layout
+
+\begin_layout Itemize
+ISOLATED= The hit has no neighbours in a 9 cm radius sphere
+\end_layout
+
+\begin_layout Itemize
+EDGE = The hit belongs to a track segment in a 9 cm radius sphere
+\end_layout
+
+\begin_layout Itemize
+CORE= all other hits
+\end_layout
+
+\begin_layout Standard
+Each hit defines a neighbouring sphere of 9 cm and a principal component
+ anlysis is done on all neighbours.
+ The ratio w of the 2 principal axis is then used to tag the hit.
+\end_layout
+
+\begin_layout Itemize
+w=0 → less than 3 neighbours, the hit is ISOLATED
+\end_layout
+
+\begin_layout Itemize
+w < 0.3 → the second axis is small, most probably hits are aligned along
+ the first axis, the hit is an EDGE one.
+\end_layout
+
+\begin_layout Itemize
+w > 0.3 , the hit is in the CORE of the shower.
+\end_layout
+
+\begin_layout Standard
+The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ratio-of-L2/L1"
+
+\end_inset
+
+ shows the distribution of w for all the hits of a 60 GeV pion run.
+ The 3 categories clearly exhibits.
+ On figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ratio-of-L2/L1-track"
+
+\end_inset
+
+ the same ratio is shown for preselected muon candidates and preselected
+ pions interaction in the same run.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Hits_Weight.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ratio-of-L2/L1"
+
+\end_inset
+
+Ratio of L2/L1 derived from PCA of neighbours hits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Hits_Weight_track.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Hits_Weight_shower.png
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ratio-of-L2/L1-track"
+
+\end_inset
+
+Ratio of L2/L1 for preselected muon tracks (top) and preselected showers
+ (bottom) 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+MIP tagging
+\end_layout
+
+\begin_layout Standard
+Once hits are sorted in thos three categories.
+ Clusters are built plane by plane by adding hits in plane distant from
+ less than 4 cm to an existing cluster.
+ Two collections are built.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Interaction
+\begin_inset Quotes erd
+\end_inset
+
+ clusters are built from CORE hits and 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ clusters from the other hits.
+ Finally 
+\begin_inset Quotes eld
+\end_inset
+
+Interaction
+\begin_inset Quotes erd
+\end_inset
+
+ clusters of less than 5 hits are moved in the 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ collection and in paralell 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ clusters of more than 5 hits are moved in the 
+\begin_inset Quotes eld
+\end_inset
+
+interaction
+\begin_inset Quotes erd
+\end_inset
+
+ one.
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ collection is then used to reconstructed track segments according to this
+ algorithm:
+\end_layout
+
+\begin_layout Itemize
+Once again principal component anlysis is used for all clusters to find
+ main direction in a 15 cm sphere around each point
+\end_layout
+
+\begin_layout Itemize
+Each point is associated to existing tracks according to
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+if the track has at least 2 hits, the error of the extrapolation is taken
+ and the point is added if
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It is not the track path
+\end_layout
+
+\begin_layout Itemize
+it is less than 3 planes away from the end of the track
+\end_layout
+
+\begin_layout Itemize
+it is less than 5 sigma from the extrapolation
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+if the track has one hit
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the track hit is one plane before
+\end_layout
+
+\begin_layout Itemize
+the principal axis of the cluster is used to build track parameter and point
+ is added if it is less than 6 cm from the extrapolation
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+If no association is found, a new single hit track is created with track
+ parameters deduced from the principal component analysis of its neighbouring.
+\end_layout
+
+\begin_layout Standard
+The algorithm is run handling hits from the beam entry to the end of the
+ calorimeter.
+ At the end , a last pass is done trying to associate single hit tracks
+ and previously unselected hits to valid segments.
+ Finally all hits belonging to a cluster associated to a track segment is
+ tagged MIP.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document
