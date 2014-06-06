@@ -374,7 +374,7 @@ reference "fig:60-GeV-Pion"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -407,8 +407,74 @@ real
 \end_inset
 
  collection of clusters projection.
- Finally on the right, track segemnets, MIP hits (black) and 3D clusters
+ Finally on the right, track segments, MIP hits (black) and 3D clusters
  of CORE hits are shown
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The track segments can also be used to dicriminate muons and elctrons from
+ hadrons, using the ration of the total track length over the total number
+ of hits.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ratio-of-LOH"
+
+\end_inset
+
+ shows this ratio.
+ The peak at zero corresponds to electron with no MIP exiting from the shower.
+ The 1.4 peak is due to muons with a hit multiplicity ~ 1.6 and finally hadron
+ showers have a low ratio up to 0.7.
+ Events are tagged:
+\end_layout
+
+\begin_layout Itemize
+ELECTRON if R<1E-4
+\end_layout
+
+\begin_layout Itemize
+MUON if R> 0.75
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename TrackLength_Over_Hits.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ratio-of-LOH"
+
+\end_inset
+
+Ratio of total tracks length over the total number of hits per event in
+ a 60 Gev Pion run
 \end_layout
 
 \end_inset

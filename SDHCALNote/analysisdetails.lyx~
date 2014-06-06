@@ -360,10 +360,71 @@ The algorithm is run handling hits from the beam entry to the end of the
  and previously unselected hits to valid segments.
  Finally all hits belonging to a cluster associated to a track segment is
  tagged MIP.
+ The figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:60-GeV-Pion"
+
+\end_inset
+
+ shows the result of the different steps of the algorithm.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
 
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename 60GevPion_MIP.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:60-GeV-Pion"
+
+\end_inset
+
+60 GeV Pion interaction display.
+ The left (red) column shows the hits position in (Z,X) and (Z,Y) projection.
+ The midle (green) column shows the 
+\begin_inset Quotes eld
+\end_inset
+
+real
+\begin_inset Quotes erd
+\end_inset
+
+ collection of clusters projection.
+ Finally on the right, track segments, MIP hits (black) and 3D clusters
+ of CORE hits are shown
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The track segments can also be used to dicriminate muons and elctrons from
+ hadrons, using the ration of the total track length over the total number
+ of hits.
 \end_layout
 
 \end_body
