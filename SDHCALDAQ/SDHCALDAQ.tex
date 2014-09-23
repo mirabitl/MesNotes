@@ -31,7 +31,7 @@ of single code pieces.
 DIF and SDCC FPGA are interfaced with the same USB chip. As mentioned before this is  an
 FTDI chip. The DIF is thus uniquely identified by its FTDI device identifier (id) stored in an EEPROM and access to
 a specific device id is done using either the proprietary library
-FTD2XX or the free version library libFTDI. A base class called  UsbDeviceDriver implements
+FTD2XX or the free version library libFTDI. A base class called  UsbDeviceDriver (or FtdiDeviceDriver if ftdi library is used) implements
 a set of low level access: bytes read or write , DIF  and SDCC registers
 access and finally predefined commands.
 
@@ -55,7 +55,7 @@ configuration parameters via an interface called  DIFManager. This scans and
 detects all connected DIF, instantiates one DIFDataHandler class per detected
 device and distributes configuration parameters. %and trigger their hardware download. 
 When data taking starts, it starts a polling thread continuously
-reading events on all connected DIF. Events can be directly dumped
+reading events on all connected DIFs. Events can be directly dumped
 to disk in LCIO format or transfer to the central data acquisition.
 Figure~\ref{software_archi} summarizes this architecture.
 
@@ -228,6 +228,10 @@ on Figure~\ref{SDHCALDAQStructure} and each Filter Unit writes the associated da
 \caption{SDHCAL DAQ structure}
 \label{SDHCALDAQStructure}
 \end{figure}
+
+\subsection{Implementation on raspberry pi micro computers}
+\subsubsection{Using micro computers}
+One critical point in the previous architecture is the number of USB devices that are to be read simultaneously. Moreover since USB bus was originally foreseen as a debug channel the chip only support USB1 (10 Mbit/s) protocol. Reading  150 USB devices on a single PC is then extremely slow and we split it on 4 different PCs with up to 7 bus (42 devices) read in parallel.    
 
 
 \end{document}
