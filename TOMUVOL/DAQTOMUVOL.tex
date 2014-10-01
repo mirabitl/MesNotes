@@ -178,13 +178,17 @@ Inside the python shell launched you can do the following:
 \item \textcolor{red}{\it \bf s=LSDHCALDimCtrl.DimDaqControl("Tomuvol")}:  creates an instance of DimDaqControl
 
 \item \textcolor{red}{\it \bf s.scandns()}: lists all DIMServer, services and commands available on the DIM DNS  
-\item \textcolor{blue}{\it \bf s.scan()}: sends a SCANDEVICES command to all dimdif servers and wait for DEVICES service update
+\item \textcolor{red}{\it \bf s.initialiseWriter("/data/online/Results")}: Initialise the data writing on the given directory. It has to be done only once if the dimwriter daemon is not stopped.
+
+\item \textcolor{blue}{\it \bf s.scan()}: sends a SCANDEVICES command to all dimdif servers and wait for DEVICES service update. It must be called once or after a destroy()
+
 
 \item \textcolor{blue}{\it {\bf s.initialise()}}: sends an INITIALISE command to all DIF found previously
-\item {\bf s.\_print()}: prints the status of each DIF on each dimdif server from the INFO service of each given DIF
-\item {\bf s.download("LPCC\_230")}: triggers the DELETE of the previous state in the DB server and the DOWNLOAD of the specified state. Since no semaphore mechanism is used in this command a 20 s delay may be needed before the data are available. It has to be called only when a new DB state needs to be downloaded
+\item {\bf s.\_print()}: prints the status of each DIF on each dimdif server from the INFO service of each given DIF. Like the scan() command it must be called only after a scan() command
 
-\item \textcolor{purple}{\bf s.registerstate(0x815A1B00,"LPCC\_230")}: send a REGISTERSTATE command to all dimdif server
+\item {\bf s.download("LPCC\_230")}: triggers the DELETE of the previous state in the DB server and the DOWNLOAD of the specified state. Since no semaphore mechanism is used in this command a 20 s delay may be needed before the data are available. It has to be called only when a new DB state needs to be downloaded or when the dimdb daemon is restarted
+
+\item \textcolor{purple}{\bf s.registerstate(0x815A1B00,"LPCC\_230")}: send a REGISTERSTATE command to all dimdif server. The state specified should be identical to the last downloaded state in dimdb. It must be called before configure to also set the control register.
 
 \item \textcolor{purple}{\bf s.configure()}: sends a CONFIGURE command to all dimdif servers
 
@@ -194,7 +198,7 @@ Inside the python shell launched you can do the following:
 \item \textcolor{green}{\bf s.start()}: starts a run, sends a START command to the dimccc, the dimdif and the dimwriter servers 
 
 \item \textcolor{green}{\bf s.stop()}: stops a run,sends a STOP command to the dimccc, the dimdif and the dimwriter servers
-\item \textcolor{blue}{\bf s.destroy()}: send a DESTROY command to the dimdif servers
+\item \textcolor{blue}{\bf s.destroy()}: send a DESTROY command to the dimdif servers. All the DIF handling are cleared locally so the only possible next command is scan()
 \end{enumerate} 
 
 The red commands needs to be used only once per session. The blue ones should be used once or if any changes has occurred on dimdif servers (power cycle for example). The purple ones are used to reconfigure chips. The green ones are the normal one to start and stop a run. Eventually the black commands are optional, the {\bf download} one must be called at least ones to access the DB but is not needed in a new session if the dimdb server is alive and already contains the state 
@@ -215,6 +219,15 @@ Then the interface can be accessed via a web browser at address http://clrtodaq0
 \end{figure}
 
 Commands can be sent manually but spying of dynamiclly allocated infos (like the DID DATA service) should be avoided since it crashes the program. 
+\subsection{Other tips}
+\subsubsection{Restarting the whole daq}
+In case of problem, after exiting the python shell, one can restart the dns and launch
+\begin{verbatim}
+~/startdimdaq
+\end{verbatim}
+It restarts all needed daemons
+
+
 \end{document}
 
 
