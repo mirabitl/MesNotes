@@ -1,7 +1,9 @@
 \documentclass[10pt]{beamer}
 \usepackage[english]{babel}
 \usepackage{graphicx}
+\usepackage{pgfkeys}
 \usepackage{tikz}
+\usepackage{amstext}
 \usetheme{Boadilla}
 \title[The SDHCAL technological proposal]{The SDHCAL technological proposal \\ Construction, first results and ongoing R\&D}
 \author{L. Mirabito}
@@ -104,31 +106,16 @@
 \begin{frame}{GRPC design}
 
   \centerline{\includegraphics[width=0.9\textwidth,height=0.4\textheight]{images/GRPCSchema}}
- 
-  
   \pause   
 
  \begin{columns}
       \begin{column}{0.45\textwidth}
-
-        \begin{center}
-          \begin{tikzpicture}
-            \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{images/GasFlow}};
-            \node[align=center,white,font={\big\bfseries}] at (image.center) {Gas flow Studies};
-          \end{tikzpicture}
-        \end{center}
+       \centerline{\includegraphics[width=0.9\textwidth]{images/GasFlow}}
       \end{column}
 \pause
       \begin{column}{0.45\textwidth}
 
-        \begin{center}
-          \begin{tikzpicture}
-            \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{images/CoatingStudies}};
-            \node[align=top,gray,font={\big\bfseries}] at (image.center) {Resistive coating study};
-          \end{tikzpicture}
-        \end{center}
-
-%        \centerline{\includegraphics[width=0.9\textwidth]{images/CoatingStudies}}
+       \centerline{\includegraphics[width=0.9\textwidth]{images/CoatingStudies}}
       \end{column}
     \end{columns}
   
@@ -176,25 +163,13 @@
 \begin{columns}
       \begin{column}{0.5\textwidth}
 
-        \begin{center}
-          \begin{tikzpicture}
-            \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{images/ConstructionRPC}} ;
-            \node[align=center,yellow,font={\Tiny\rmseries}] at (image.center) {1 m2 Chamber with gas pipe\\and HV connection} ;
-          \end{tikzpicture}
-        \end{center}
+        \centerline{\includegraphics[width=0.9\textwidth]{images/ConstructionRPC}}
       \end{column}
 \pause
       \begin{column}{0.5\textwidth}
 
-        \begin{center}
-          \begin{tikzpicture}
-            \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{images/1m2HR2}};
-            \node[align=center,yellow,font={\Tiny\rmseries}] at (image.center) 
-                 {1 m2 electronic,\\ 6 ASUs soldered together,\\ 144 chips,\\ 9216 pads };
-          \end{tikzpicture}
-        \end{center}
 
-%        \centerline{\includegraphics[width=0.9\textwidth]{images/CoatingStudies}}
+        \centerline{\includegraphics[width=0.9\textwidth]{images/1m2HR2}}
       \end{column}
     \end{columns}
 \begin{columns}
@@ -202,46 +177,60 @@
 
       \begin{column}{0.5\textwidth}
 
-        \begin{center}
-          \begin{tikzpicture}
-            \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{images/1m2Cover}} ;
-            \node[align=center,yellow,font={\Tiny\rmseries}] at (image.center) {Cassette cover with PCB screwed on it} ;
-          \end{tikzpicture}
-        \end{center}
+         \centerline{\includegraphics[width=0.9\textwidth]{images/1m2Cover}}
       \end{column}
 \pause
       \begin{column}{0.5\textwidth}
 
-        \begin{center}
-          \begin{tikzpicture}
-            \node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[width=0.9\textwidth]{images/1m2Cassette}};
-            \node[align=center,yellow,font={\Tiny\rmseries}] at (image.center) 
-                 {
-amagnetic stainless steel walls 2.5 mm thick,\\ Total Thickness = 6mm (active layer)+5 mm (steel) = 11 mm 
-} ;
-
-          \end{tikzpicture}
-        \end{center}
-
-%        \centerline{\includegraphics[width=0.9\textwidth]{images/CoatingStudies}}
+        
+        \centerline{\includegraphics[width=0.9\textwidth]{images/1m2Cassette}}
       \end{column}
     \end{columns}
 
 \end{frame}
-\begin{frame}{Chamber performances}
-\begin{block}{Cosmic muons studies}
+\begin{frame}{Acquisition system}
+ \centerline{\includegraphics[width=0.9\textwidth,height=0.45\textheight]{images/DAQLinks.png}}
+ \begin{block}
+   {\small 
+          \par $ ~\rightarrow$  Oracle configuration data base
+          \par $ ~\rightarrow$  Event building with CMS Event Event builder (XDAQ)
+          \par $ ~ \rightarrow$ Up to 150 USB links on 4 PCs
+          \par $ ~\rightarrow$  Rate limited by USB1 links and daisy chaining 
+
+
+        }
+ \end{block}
+\end{frame}
+\begin{frame}{Chamber performances  }
+\begin{block}{ Cosmic muons studies}
   \begin{columns}
 
       \begin{column}{0.5\textwidth}
-        \centerline{\includegraphics[width=0.9\textwidth]{images/CoatingStudies}}
+        \centerline{\includegraphics[width=0.9\textwidth]{images/LocalEfficiency}}
       \end{column}
       \begin{column}{0.5\textwidth}
-        \centerline{\includegraphics[width=0.9\textwidth]{images/CoatingStudies}}
+        \centerline{\includegraphics[width=0.9\textwidth]{images/LocalMultiplicity}}
+      \end{column}
+    \end{columns}
+\end{block}
+
+\end{frame}
+\begin{frame}{Chamber performances  }
+\begin{block}{Power-pulsed performances in 3T B field (H2-CERN)}
+ \begin{columns}
+
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.9\textwidth]{images/PowerPulsingPhoto}}
+      \end{column}
+     
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.9\textwidth]{images/PowerPulsingHvScan}}
 %        \centerline{\includegraphics[width=0.9\textwidth]{images/CoatingStudies}}
       \end{column}
     \end{columns}
-
 \end{block}
+
 \end{frame}
+
 
 \end{document}
