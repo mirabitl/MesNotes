@@ -60,7 +60,7 @@
 
     \end{column}
 
-    \begin{column}{0.45\textwidth}
+    \begin{column}{0.4\textwidth}
       \centerline{\includegraphics[width=0.45\textwidth]{jpg/IldDhcal}}
       \centerline{\includegraphics[width=0.55\textwidth]{jpg/DHCALProtoSchema}}
     \end{column}
@@ -188,17 +188,18 @@
   \end{columns}
 
 \end{frame}
+
 \begin{frame}{Acquisition system}
   \centerline{\includegraphics[width=0.9\textwidth,height=0.45\textheight]{jpg/DAQLinks}}
-  \begin{block}
-    {\small 
-      \par $ ~\rightarrow$  Oracle configuration data base
-      \par $ ~\rightarrow$  Event building with CMS Event Event builder (XDAQ)
-      \par $ ~ \rightarrow$ Up to 150 USB links on 4 PCs
-      \par $ ~\rightarrow$  Rate limited by USB1 links and daisy chaining 
+  \begin{block}{}
+    \begin{itemize}
 
+     \item Oracle configuration data base
+     \item  Event building with CMS Event Event builder (XDAQ)
+     \item  Up to 150 USB links on 4 PCs
+     \item  Rate limited by USB1 links and  5 MHz readout of ASIC daisy chained 
 
-    }
+    \end{itemize}
   \end{block}
 \end{frame}
 \begin{frame}{Chamber performances  }
@@ -233,12 +234,12 @@
 \end{frame}
 \section{ Technological prototype}
 \begin{frame}[shrink=3]{Prototype construction}
-  \begin{block}
+  \begin{block}{}
 
     \begin{columns}
 
       \begin{column}{0.5\textwidth}
-        \begin{block}
+        \begin{block}{}
         { 
           Production and test of 
           \par $ ~\rightarrow$ 10500 HR2 chips  (LAL Omega)
@@ -258,7 +259,7 @@
     \begin{columns}
 
       \begin{column}{0.5\textwidth}
-        \begin{block}
+        \begin{block}{}
         {
           Production and test of 
           \par $ ~\rightarrow$ 50 chambers and cassettes
@@ -277,28 +278,66 @@
 \begin{frame}{Final integration at CERN}
 \begin{columns}
  \begin{column}{0.5\textwidth}
-\begin{block}
-        { 
-          \par $ ~\rightarrow$ Mechanical structure developped by CIEMAT
-          \par $ ~\rightarrow$ HV and cooling services developped by Gent and Louvain
-          \par $ ~\rightarrow$ Full assembly made at CERN before the beam tests
-          
-        }
+\begin{block}{}
+  \begin{itemize}
+  \item Mechanical structure developped by CIEMAT
+  \item HV and cooling services developped by Gent and Louvain
+  \item Full assembly made at CERN before the beam tests     
+  \end{itemize}
 \end{block}
       \end{column}
       
       \begin{column}{0.5\textwidth}
- \centerline{\includegraphics[height=0.5\textheight]{jpg/ConstructionStructure.jpg}}
- \centerline{\includegraphics[height=0.5\textheight]{jpg/ConstructionInsertion.jpg}}
+ 
+        \centerline{\includegraphics[width=0.9\textwidth,height=0.5\textheight]{jpg/ConstructionStructure.jpg}}
+        \centerline{\includegraphics[width=0.9\textwidth]{jpg/ConstructionInsertion.jpg}}
 
       \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Beam tests in 2012}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{block}{}
+        \begin{itemize}
+        \item 5 weeks of data taking on PS and SPS line at CERN
+        \item $\pi$ and e beams from 3 to 100 GeV allowing to study both hadronic and electromagnetic showers in a large energy range
+         \item power pulsing mode (Analog on during spill) minimized the required cooling
+         \item Trigger less mode $\rightarrow$ better daq efficiency, beam muons to monitor the rate and the chambers efficiency
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \centerline{\includegraphics[width=0.9\textwidth,height=0.5\textheight]{jpg/1m3Photo.jpg}}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Showers}
+  \begin{block}{10 Gev $\pi$ and e}
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.95\textwidth]{jpg/10GevPion.jpg}}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.95\textwidth]{jpg/10GevElectron.jpg}}
+      \end{column}
+    \end{columns}
+      
+  \end{block}
+  \begin{block}{50 Gev $\pi$ and e}
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.95\textwidth]{jpg/50GevPion.jpg}}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.95\textwidth]{jpg/50GevElectron.jpg}}
+      \end{column}
+    \end{columns}
+
+  \end{block}
+
 \end{frame}
 
 \begin{frame}{Analysis path}
