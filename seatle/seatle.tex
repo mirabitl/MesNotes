@@ -4,7 +4,7 @@
 \usepackage{pgfkeys}
 \usepackage{tikz}
 \usepackage{amstext}
-\usetheme{Boadilla}
+\usetheme{default}
 \title[The SDHCAL technological proposal]{The SDHCAL technological proposal \\ Construction, first results and ongoing R\&D}
 \author{L. Mirabito}
 \institute{IPN Lyon, UCB Lyon, IN2P3, CNRS}
@@ -108,21 +108,21 @@
   \centerline{\includegraphics[width=0.9\textwidth,height=0.4\textheight]{jpg/GRPCSchema}}
   \pause   
 
- \begin{columns}
-      \begin{column}{0.45\textwidth}
-       \centerline{\includegraphics[width=0.9\textwidth]{jpg/GasFlow}}
-      \end{column}
-\pause
-      \begin{column}{0.45\textwidth}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \centerline{\includegraphics[width=0.9\textwidth]{jpg/GasFlow}}
+    \end{column}
+    \pause
+    \begin{column}{0.45\textwidth}
 
-       \centerline{\includegraphics[width=0.9\textwidth]{jpg/CoatingStudies}}
-      \end{column}
-    \end{columns}
+      \centerline{\includegraphics[width=0.9\textwidth]{jpg/CoatingStudies}}
+    \end{column}
+  \end{columns}
   
 
 \end{frame}
 \begin{frame}[shrink=3]{Readout Electronic}
-\begin{block}{HardRoc asic}
+  \begin{block}{HardRoc asic}
     \begin{columns}
       \begin{column}{0.5\textwidth}
         {\small 
@@ -135,14 +135,14 @@
       \end{column}
 
       \begin{column}{0.5\textwidth}
-         \centerline{\includegraphics[width=0.9\textwidth]{jpg/HR2Chip}}
-         \centerline{\includegraphics[width=0.9\textwidth]{jpg/HR2GainAdjustement}}
+        \centerline{\includegraphics[width=0.9\textwidth]{jpg/HR2Chip}}
+        \centerline{\includegraphics[width=0.9\textwidth]{jpg/HR2GainAdjustement}}
       \end{column}
 
     \end{columns}
-\end{block}
-\pause
-\begin{block}{ASU PCB devlopment}
+  \end{block}
+  \pause
+  \begin{block}{ASU PCB devlopment}
     \begin{columns}
       \begin{column}{0.5\textwidth}
         {\small 
@@ -153,57 +153,57 @@
       \end{column}
 
       \begin{column}{0.5\textwidth}
-         \centerline{\includegraphics[width=0.9\textwidth]{jpg/DIFAsu}}
+        \centerline{\includegraphics[width=0.9\textwidth]{jpg/DIFAsu}}
       \end{column}
 
     \end{columns}
-\end{block}
+  \end{block}
 \end{frame}
 \begin{frame}{Cassette assembly}
-\begin{columns}
-      \begin{column}{0.5\textwidth}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
 
-        \centerline{\includegraphics[width=0.9\textwidth]{jpg/ConstructionRPC}}
-      \end{column}
-\pause
-      \begin{column}{0.5\textwidth}
+      \centerline{\includegraphics[width=0.9\textwidth]{jpg/ConstructionRPC}}
+    \end{column}
+    \pause
+    \begin{column}{0.5\textwidth}
 
 
-        \centerline{\includegraphics[width=0.9\textwidth]{jpg/1m2HR2}}
-      \end{column}
-    \end{columns}
-\begin{columns}
-\pause
+      \centerline{\includegraphics[width=0.9\textwidth]{jpg/1m2HR2}}
+    \end{column}
+  \end{columns}
+  \begin{columns}
+    \pause
 
-      \begin{column}{0.5\textwidth}
+    \begin{column}{0.5\textwidth}
 
-         \centerline{\includegraphics[width=0.9\textwidth]{jpg/1m2Cover}}
-      \end{column}
-\pause
-      \begin{column}{0.5\textwidth}
+      \centerline{\includegraphics[width=0.9\textwidth]{jpg/1m2Cover}}
+    \end{column}
+    \pause
+    \begin{column}{0.5\textwidth}
 
-        
-        \centerline{\includegraphics[width=0.9\textwidth]{jpg/1m2Cassette}}
-      \end{column}
-    \end{columns}
+      
+      \centerline{\includegraphics[width=0.9\textwidth]{jpg/1m2Cassette}}
+    \end{column}
+  \end{columns}
 
 \end{frame}
 \begin{frame}{Acquisition system}
- \centerline{\includegraphics[width=0.9\textwidth,height=0.45\textheight]{jpg/DAQLinks}}
- \begin{block}
-   {\small 
-          \par $ ~\rightarrow$  Oracle configuration data base
-          \par $ ~\rightarrow$  Event building with CMS Event Event builder (XDAQ)
-          \par $ ~ \rightarrow$ Up to 150 USB links on 4 PCs
-          \par $ ~\rightarrow$  Rate limited by USB1 links and daisy chaining 
+  \centerline{\includegraphics[width=0.9\textwidth,height=0.45\textheight]{jpg/DAQLinks}}
+  \begin{block}
+    {\small 
+      \par $ ~\rightarrow$  Oracle configuration data base
+      \par $ ~\rightarrow$  Event building with CMS Event Event builder (XDAQ)
+      \par $ ~ \rightarrow$ Up to 150 USB links on 4 PCs
+      \par $ ~\rightarrow$  Rate limited by USB1 links and daisy chaining 
 
 
-        }
- \end{block}
+    }
+  \end{block}
 \end{frame}
 \begin{frame}{Chamber performances  }
-\begin{block}{ Cosmic muons studies}
-  \begin{columns}
+  \begin{block}{ Cosmic muons studies}
+    \begin{columns}
 
       \begin{column}{0.5\textwidth}
         \centerline{\includegraphics[width=0.9\textwidth]{jpg/LocalEfficiency}}
@@ -212,27 +212,87 @@
         \centerline{\includegraphics[width=0.9\textwidth]{jpg/LocalMultiplicity}}
       \end{column}
     \end{columns}
-\end{block}
+  \end{block}
 
 \end{frame}
 \begin{frame}{Chamber performances  }
-\begin{block}{Power-pulsed performances in 3T B field (H2-CERN)}
- \begin{columns}
+  \begin{block}{Power-pulsed performances in 3T B field (H2-CERN)}
+    \begin{columns}
 
       \begin{column}{0.5\textwidth}
         \centerline{\includegraphics[width=0.9\textwidth]{jpg/PowerPulsingPhoto}}
       \end{column}
-     
+      
       \begin{column}{0.5\textwidth}
         \centerline{\includegraphics[width=0.9\textwidth]{jpg/PowerPulsingHvScan}}
-%        \centerline{\includegraphics[width=0.9\textwidth]{jpg/CoatingStudies}}
+        %        \centerline{\includegraphics[width=0.9\textwidth]{jpg/CoatingStudies}}
       \end{column}
     \end{columns}
-\end{block}
+  \end{block}
 
 \end{frame}
 \section{ Technological prototype}
-\begin{frame}{Prototype construction}
+\begin{frame}[shrink=3]{Prototype construction}
+  \begin{block}
+
+    \begin{columns}
+
+      \begin{column}{0.5\textwidth}
+        \begin{block}
+        { 
+          Production and test of 
+          \par $ ~\rightarrow$ 10500 HR2 chips  (LAL Omega)
+          \par $ ~\rightarrow$  150 ASU + 300 interconnection PCBs
+          \par $ ~ \rightarrow$ 170 DIF (LAPP) and 20 DCC (LLR)
+        }
+        \end{block}
+      \end{column}
+      
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.9\textwidth]{jpg/ConstructionGantry.jpg}}
+      \end{column}
+    \end{columns}
+  \end{block}
+\begin{block}
+
+    \begin{columns}
+
+      \begin{column}{0.5\textwidth}
+        \begin{block}
+        {
+          Production and test of 
+          \par $ ~\rightarrow$ 50 chambers and cassettes
+          \par $ ~\rightarrow$ 8 storage racks used as cosmic muon stand 
+        }
+        \end{block}
+      \end{column}
+      
+      \begin{column}{0.5\textwidth}
+        \centerline{\includegraphics[width=0.9\textwidth]{jpg/ConstructionRack.jpg}}
+      \end{column}
+    \end{columns}
+  \end{block}
+
+\end{frame}
+\begin{frame}{Final integration at CERN}
+\begin{columns}
+ \begin{column}{0.5\textwidth}
+\begin{block}
+        { 
+          \par $ ~\rightarrow$ Mechanical structure developped by CIEMAT
+          \par $ ~\rightarrow$ HV and cooling services developped by Gent and Louvain
+          \par $ ~\rightarrow$ Full assembly made at CERN before the beam tests
+          
+        }
+\end{block}
+      \end{column}
+      
+      \begin{column}{0.5\textwidth}
+ \centerline{\includegraphics[height=0.5\textheight]{jpg/ConstructionStructure.jpg}}
+ \centerline{\includegraphics[height=0.5\textheight]{jpg/ConstructionInsertion.jpg}}
+
+      \end{column}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Beam tests in 2012}
