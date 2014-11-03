@@ -340,7 +340,77 @@
 
 \end{frame}
 
+\begin{frame}{Commissioning}
+\begin{block}{Noise Studies}
+\begin{columns}
+\begin{column}{0.3\textwidth}
+  {\small
+    \par $ ~ \rightarrow$  $ < 1 $ Hz/pad, $\simeq 0.35 $ Hit/ Bx (200 ns)
+    \par $ ~ \rightarrow$ Locally high noise (mask or gain adjust)
+  }  
+\end{column}
+\begin{column}{0.35\textwidth}
+  \centerline{\includegraphics[width=0.95\textwidth]{jpg/hitsperclock.jpg}}
+\end{column}
+\begin{column}{0.35\textwidth}
+  \centerline{\includegraphics[width=0.95\textwidth]{jpg/HitsMap.jpg}}
+\end{column}
+\end{columns}
+\end{block}
+
+\begin{block}{Threshold study}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+  {
+    \par $ ~ \rightarrow$ Dedicated $\mu$ runs
+    \par $ ~ \rightarrow$ Scan efficiency for the 3 thresholds
+    \par $ ~ \rightarrow$ MC Polya response adjust from it
+  }  
+\end{column}
+\begin{column}{0.5\textwidth}
+
+  \centerline{\includegraphics[height=0.45\textheight]{jpg/thresholdscan.jpg}}
+
+\end{column}
+\end{columns}
+\end{block}
+\end{frame}
 \begin{frame}{Analysis path}
+\begin{block}{$\mu$ and e rejection}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+  {\small
+    \par $ ~ \rightarrow $ Shower starts after 5th layer or more than 30 layers have at least 4 hits. (electron rejection)
+    \par $ ~ \rightarrow $ Mean number of hits in fired layers above 2.2. ($\mu$ rejection)
+    \par $ ~ \rightarrow $ At least 20 \% of the fired layers should have a spatial hit distribution with RMS $>$ 5cm (radiative $\mu$ rejection)
+    \par $ ~ \rightarrow $ At least 4 hits in the first 5 layers (neutral rejection)   
+  }  
+\end{column}
+\begin{column}{0.5\textwidth}
+
+  \centerline{\includegraphics[height=0.45\textheight]{jpg/pionselection.jpg}}
+
+\end{column}
+\end{columns}
+
+\end{block}
+\pause
+\begin{block}{Energy calibration}
+\begin{columns}[t]
+\begin{column}{0.5\textwidth}
+{\small
+ $ E_{R} =\alpha N_1 + \beta N_2 + \gamma N_3 $
+
+where $ \alpha , \beta , \gamma $  are quadratic functions in $ N_{tot} $ and  fitted from data
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+
+  \centerline{\includegraphics[height=0.45\textheight]{jpg/evolution.jpg}}
+
+\end{column}
+\end{columns}
+\end{block}
 \end{frame}
 \begin{frame}{Results}
 \end{frame}
