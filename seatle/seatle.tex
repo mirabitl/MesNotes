@@ -413,20 +413,93 @@ where $ \alpha , \beta , \gamma $  are quadratic functions in $ N_{tot} $ and  f
 \end{block}
 \end{frame}
 \begin{frame}{Results}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+
+  \centerline{\includegraphics[height=0.9\textheight]{jpg/Energy-Linearity.jpg}}
+\end{column}
+\begin{column}{0.5\textwidth}
+
+  \centerline{\includegraphics[width=1.15\textwidth]{jpg/Beam2012Resolution.jpg}}
+
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Current software improvements}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+  {
+    \par Tagging MIPs hits (Hought transform,combinatorial) separatly in $E_R$ fit, improves resolution from 7\%- 15 \%
+  }
+
+  \centerline{\includegraphics[width=0.9\textwidth]{jpg/Beam2012Hough.jpg}}
+\end{column}
+\begin{column}{0.5\textwidth}
+  {
+    \par New Shower reconstruction algorithm Arbor (MST based) improves shower separation
+  }
+  \centerline{\includegraphics[width=1.15\textwidth]{jpg/Beam2012Arbor.jpg}}
+\end{column}
+\end{columns}
+
 \end{frame}
 
 \section{Future}
 
 \begin{frame}{Next data taking}
+\begin{block}{Improve statistic}
+\begin{itemize}
+\item USB2 readout improves DAQ efficiency from 7 \% to 40 \%
+\item Some 2012 runs were taken with $> 100$ Hz/pad, efficiency is currently corrected. Longe low intensity runs needed 
+\item Dedicated e runs to improve MC tuning 
+\end{itemize}
+\end{block}
+\pause
+\begin{block}{ New DAQ}
+\begin{itemize}
+\item Low consumption, integrated PC (raspberry pi), one for 4 chambers
+\item Lighter DAQ framework (DIM)
+\end{itemize}
+
+\end{block}
 \end{frame}
 
 \begin{frame}{2 m long chambers}
+\begin{block}{New gas distribution system}
+  \centerline{\includegraphics[width=1.15\textwidth]{jpg/gasflow2m.jpg}}
+\end{block}
+\begin{block}{New mechanical structure}
+  \centerline{\includegraphics[width=1.15\textwidth]{jpg/2mmechanic.jpg}}
+\end{block}
 \end{frame}
+\begin{frame}[shrink=2]{ New electronic}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{block}{HardROC3 (Omega)}
+\begin{itemize}
+\item Independant 8-slots buffer per channel
+\item I2C configuration
+\item Better dynmamic range 
+\end{itemize}
 
-\begin{frame}{ New electronic}
+\end{block}
+\centerline{\includegraphics[width=0.95\textwidth]{jpg/HR3.jpg}}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{block}{DIF3 (CIEMAT)}
+\begin{itemize}
+\item One DIF per plane (432 chips in 12 paralell lines)
+\item Ethernet (commercial chip) readout, TTC clock \& commands
+\item Spare SFP cage for bi-directionnal serial link implemnentation (GBT)
+\end{itemize}
+
+\end{block}
+\centerline{\includegraphics[width=0.75\textwidth]{jpg/DIF3.jpg}}
+
+\end{column}
+\end{columns}
 \end{frame}
 
 
