@@ -5,7 +5,7 @@
 \usepackage{tikz}
 \usepackage{amstext}
 \usetheme{default}
-\title[The SDHCAL technological proposal]{The SDHCAL technological proposal \\ Construction, first results and ongoing R\&D}
+\title[The SDHCAL technological proposal]{The SDHCAL technological prototype \\ Construction, first results and ongoing R\&D}
 \author{L. Mirabito}
 \institute{IPN Lyon, UCB Lyon, IN2P3, CNRS}
 \date{November 11, 2014}
@@ -33,7 +33,7 @@
     \begin{column}{0.6\textwidth}
       \begin{block}{\small Context}
    	{\small The SDHCAL-GRPC is one of the two HCAL options proposed
-          in the ILD Letter Of Intention (LOI). Modules are  made of 
+          in the ILD Letter Of Intent (LOI). Modules are  made of 
           48 RPC chambers (6$\lambda_I$) equipped with 
           power-pulsed electronics readout.}   
       \end{block}
@@ -47,7 +47,7 @@
         }
       \end{block}
 
-      \begin{block}{\small  Challenges}
+      \begin{block}{\small  Chamber challenges}
         {\small 
           \par $ ~ \rightarrow$ Thickness of only few mms
           \par $ ~ \rightarrow$ Homogeneity for large surfaces
@@ -123,12 +123,13 @@
 
 \end{frame}
 \begin{frame}[shrink=3]{Readout Electronic}
-  \begin{block}{HardRoc ASIC (Omega)}
+  \begin{block}{HardRoc ASIC}
     \begin{columns}
       \begin{column}{0.5\textwidth}
         {\small 
+          developped by Omega
           \par $ ~ \rightarrow$ 64 channels, triggerless mode, 127 memory slots
-          \par $ ~\rightarrow$  3 thresholds [10 fC,  15 pC]
+          \par $ ~\rightarrow$  3 thresholds , range [10 fC,  15 pC]
           \par $ ~\rightarrow$  Channel gain : Uniformity correction
           \par $ ~\rightarrow$  Analog power switch: Power-pulsed capability, low consumption
 
@@ -149,7 +150,7 @@
         {\small 
           \par $ ~ \rightarrow$ 8-Layers, buried vias, 50 x 33 cms
           \par $ ~\rightarrow$  Two 24 asics PCB connected with flat connectors
-          \par $ ~\rightarrow$  DAQ board (DIF) controls and read the 48 daisy chained chips (LAPP)
+          \par $ ~\rightarrow$  DAQ board (DIF) controls and read the 48 daisy chained chips (developped by LAPP)
         }
       \end{column}
 
@@ -310,7 +311,7 @@
     \begin{column}{0.4\textwidth}
       \begin{block}{}
         \begin{itemize}
-        \item 5 weeks of data taking on PS and SPS line at CERN
+        \item 5 weeks of data taking on PS and SPS lines at CERN
         \item $\pi$ and e beams from 3 to 100 GeV allowing to study both hadronic and electromagnetic showers in a large energy range
          \item power pulsing mode (Analog on during spill) minimized the required cooling
          \item Trigger less mode $\rightarrow$ better daq efficiency, beam muons to monitor the rate and the chambers efficiency
@@ -410,7 +411,7 @@
 {\small
  $ E_{R} =\alpha N_1 + \beta N_2 + \gamma N_3 $
 
-where $ \alpha , \beta , \gamma $  are quadratic functions in $ N_{tot} $ and  fitted from data
+where $ \alpha , \beta , \gamma $  are quadratic functions in $ N_{tot}=N_1+N_2+N_3 $ and  fitted from data
 }
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -439,7 +440,7 @@ where $ \alpha , \beta , \gamma $  are quadratic functions in $ N_{tot} $ and  f
 \begin{columns}
 \begin{column}{0.5\textwidth}
   {
-    \par Tagging MIPs hits (Hought transform,combinatorial) separatly in $E_R$ fit, improves resolution from 7\%- 15 \%
+    \par Tagging MIPs hits (Hough transform,combinatorial) separatly in $E_R$ fit, improves resolution from 7\%- 15 \%
   }
 
   \centerline{\includegraphics[width=0.9\textwidth]{jpg/Beam2012Hough.jpg}}
@@ -460,7 +461,7 @@ where $ \alpha , \beta , \gamma $  are quadratic functions in $ N_{tot} $ and  f
 \begin{block}{Improve statistic}
 \begin{itemize}
 \item USB2 readout improves DAQ efficiency from 7 \% to 40 \%
-\item Some 2012 runs were taken with $> 100$ Hz/pad, efficiency is currently corrected. Longe low intensity runs needed 
+\item Some 2012 runs were taken with $> 100$ Hz/pad, efficiency is currently corrected. Long low intensity runs needed 
 \item Dedicated e runs to improve MC tuning 
 \end{itemize}
 \end{block}
