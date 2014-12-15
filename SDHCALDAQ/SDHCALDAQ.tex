@@ -234,7 +234,19 @@ on Figure~\ref{SDHCALDAQStructure} and each Filter Unit writes the associated da
 The run control developed in CMS could have been used but its deployment for small beamtest experiment is heavy. Alternatively a set of python script was developed to create XML description of application content of each computer (DIFManager, CCCManager, Database). Then a secondf set of python script used the web capabilities of the XDAQ application and send SOAP or XMLRPC messages to each server to trigger the applications final state machine. 
 The global state machine (Initialise, Configure,Enable,Stop,Halt,Destroy) is coded in this python script. Eventually a Qt based graphical user interface is provided, using PyQt \cite{PyQt} framework to bind python methods to graphic widgets. 
 \subsection{Online Monitoring}
+
+The online monitoring is a two steps process:
+\begin{itemize}
+\item A XDAQ application LCIOAnalyzer runs in standalone, waiting for events to be sent by each of the Filter Unit in a sampling mode ($\simeq$ 1\%). Events collected are stored and a separated thread analyzes the events using the ILC analysis program MARLIN \cite{MARLIN} allowing any developers to deploy its own analysis code. The ROOT histograms are booked in memory by a singleton class that keep a map of all histograms booked by any of the analysis modules.
+
+\item The LCIOanalyzer answers to HistoList and HistoGet SOAP commands and returns the list of histograms names and an XML encoding of the histogram requested respectively. Clients, using XMLRPC or SOAP request in python, can 
+access the XML answers remotely and using PyROOT \cite{PyROOT} can recovered the request ROOT histogram and display it. Once again a PyQt graphical interface is provided to ease the user access. 
+\end{itemize}
+This distribution of ROOT histogram is usefull since users are able to manipulate the histogram (zoom, fit...) and not only its image but is limited to a relatively small number of client ( $\simeq$ 10).
 \subsection{Performances}
+
+With a 5 Mbit serial bus used to read sequentially the 48 Asics on each ASU, the network is not  
+
 \subsection{Implementation on raspberry pi micro computers}
 \subsubsection{Using micro computers}
 One critical point in the previous architecture is the number of USB devices that are to be read simultaneously. Moreover since USB bus was originally foreseen as a debug channel the chip only support USB1 (10 Mbit/s) protocol. Reading  150 USB devices on a single PC is then extremely slow and we split it on 4 different PCs with up to 7 bus (42 devices) read in parallel.    
