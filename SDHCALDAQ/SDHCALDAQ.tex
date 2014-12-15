@@ -31,17 +31,19 @@ of single code pieces.
 DIF and SDCC FPGA are interfaced with the same USB chip. As mentioned before this is  an
 FTDI chip. The DIF is thus uniquely identified by its FTDI device identifier (id) stored in an EEPROM and access to
 a specific device id is done using either the proprietary library
-FTD2XX or the free version library libFTDI. A base class called  UsbDeviceDriver (or FtdiDeviceDriver if ftdi library is used) implements
-a set of low level access: bytes read or write , DIF  and SDCC registers
-access and finally predefined commands.
+FTD2XX or the free version library libFTDI. A device driver library was developped to implement a set of low level access (read and write of registers) of the two boards. 
+
+
+%A base class called  UsbDeviceDriver (or FtdiDeviceDriver if ftdi library is used) implements
+%a set of low level access: bytes read or write , DIF  and SDCC registers
+%access and finally predefined commands.
 
 
 \subsubsection{DIF and SDCC readout}
 
 An upper layer software is dedicated to DIF configuration and
-DIF readout. The class called BasicUsbDataHandler aggregates a pointer to
-a UsbDeviceDriver and to a configuration buffer handling all DIF and
-the slow control parameters. Specific methods are used to implement the DIF configuration,
+DIF readout. The class DIFDataHandler aggregates a pointer to
+a UsbDeviceDriver and to a configuration buffer handling the DIF slow control parameters. Specific methods are used to implement the DIF configuration,
 the ASIC configurations and a single event readout to an internal
 buffer. Similarly, an SDCCDataHandler implements commands associated to the SDCC.
 
@@ -57,7 +59,7 @@ device and distributes configuration parameters. %and trigger their hardware dow
 When data taking starts, it starts a polling thread continuously
 reading events on all connected DIFs. Events can be directly dumped
 to disk in LCIO format or transfer to the central data acquisition.
-Figure~\ref{software_archi} summarizes this architecture.
+Figure~\ref{software_archi} summarizes the whole architecture.
 
 \begin{figure}
 \includegraphics[width=0.9\textwidth]{./LowLevelHardware.png}
@@ -190,9 +192,9 @@ is directly mapped in the system memory and data can be written, listed
 and read with extremely fast access. Each DIF data block is written
 as a single file named Event\_BCID\_DIFID in /dev/shm and an empty file
 /dev/shm/closed/Event\_BCID\_DIFID is created once the event file
-is closed. Standard C functions are used to list events available,
+is full writen and closed. Standard C functions are used to list events available,
 to read, write and delete data. This method allows to separate the
-process reading data from those making data collection, writing,
+process of reading data from those making data collection, writing,
 debugging and monitoring in a single computer without special protocol
 or API to be used.
 
@@ -228,7 +230,11 @@ on Figure~\ref{SDHCALDAQStructure} and each Filter Unit writes the associated da
 \caption{SDHCAL DAQ structure}
 \label{SDHCALDAQStructure}
 \end{figure}
-
+\subsection{Run Control}
+The run control developed in CMS could have been used but its deployment for small beamtest experiment is heavy. Alternatively a set of python script was developed to create XML description of application content of each computer (DIFManager, CCCManager, Database). Then a secondf set of python script used the web capabilities of the XDAQ application and send SOAP or XMLRPC messages to each server to trigger the applications final state machine. 
+The global state machine (Initialise, Configure,Enable,Stop,Halt,Destroy) is coded in this python script. Eventually a Qt based graphical user interface is provided, using PyQt \cite{PyQt} framework to bind python methods to graphic widgets. 
+\subsection{Online Monitoring}
+\subsection{Performances}
 \subsection{Implementation on raspberry pi micro computers}
 \subsubsection{Using micro computers}
 One critical point in the previous architecture is the number of USB devices that are to be read simultaneously. Moreover since USB bus was originally foreseen as a debug channel the chip only support USB1 (10 Mbit/s) protocol. Reading  150 USB devices on a single PC is then extremely slow and we split it on 4 different PCs with up to 7 bus (42 devices) read in parallel.    
