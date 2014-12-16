@@ -245,10 +245,18 @@ access the XML answers remotely and using PyROOT \cite{PyROOT} can recovered the
 This distribution of ROOT histogram is usefull since users are able to manipulate the histogram (zoom, fit...) and not only its image but is limited to a relatively small number of client ( $\simeq$ 10).
 \subsection{Performances}
 
-With a 5 Mbit serial bus used to read sequentially the 48 Asics on each ASU, the network is not  
+The readout mode we used is called ILC mode. The ASIC acquisition is started via a command from the SDCC, each chips acquires a 20 bytes frame synchronised with the 5 MHz whenever one of the 64 channels fired a threshold.
+Once an ASIC reach 127 frames buffered it triggers a RAM full  signal to the SDCC which sends back a Stop Acquisition to all chips and a Start Readout command to empty the chips buffer and send data on the USB bus. Once all chips are read a new Start Acqusition is triggered for the next event. In a pure ILC mode (1 ms data taking , 200 ms inter crossing) the Stop acquisition is forced at the end of the crossing.
+
+With an optimal noise of 1 Hz/pad, each asic is able to acquire frame during to 2 s. The average size of data read on an SLAB is then $ 48 (ASIC) \times 127 (frame) \times 20 (frame size) \simeq 120 $ kbytes. Those 60 kbytes/s are read using a serial line at 5 MHz on the ASU and a 10 Mbit/s USB1 bus. So we expect in this  best case a dead time of 180 ms due to the ASU readout and 90 ms due to the USB one. That leads to an average disponibility of 88 \%, that can be increased to 92 \% if an USB2 readout is used.
+
+Unfortunately this readout mode is driven by the most noisy asic in the SDHCAL. Local variation of the gap, of the painting resistivity or of the temperature may lead to hot spots where the noise can reach hundred of Hz. A few asics ($ \simeq $ 2 \%) on the edge of the most inhomogeneous  planes reach up to 4 kHz. With such high noisy spot the readout rate could reach 30 Hz but it's mainly empty events and the disponibility decreases to 8 \%. Masquing the most noisy ones allowed a data taking diponibility of 20 \% during the last beam tests where USB2 is used.
+
+One should notice that in pure ILC mode ( 1ms crossing, 200 ms off), the tiny acquisition time guaranties full disponibility of the detector despite those local high noise asics.               
+
 
 \subsection{Implementation on raspberry pi micro computers}
-\subsubsection{Using micro computers}
+
 One critical point in the previous architecture is the number of USB devices that are to be read simultaneously. Moreover since USB bus was originally foreseen as a debug channel the chip only support USB1 (10 Mbit/s) protocol. Reading  150 USB devices on a single PC is then extremely slow and we split it on 4 different PCs with up to 7 bus (42 devices) read in parallel.    
 
 
