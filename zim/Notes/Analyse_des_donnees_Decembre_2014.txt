@@ -10,3 +10,15 @@ Le [[https://lyosvn.in2p3.fr/elog/ILC+Data+Square+Meter/|logbook]] contient le r
 
 {{./diagram.png?type=diagram}}
 
+===== Coupures =====
+
+1. {{./equation.png?type=equation}}
+2. {{./equation001.png?type=equation}}
+3. {{./equation002.png?type=equation}}
+4. {{./equation003.png?type=equation}}First Inetraction plane < 10
+5. {{./equation004.png?type=equation}}
+6. Only one shower per event
+
+
+La selection des electrons est deja faite dans l'analyse
+
