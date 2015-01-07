@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Glass RPC }{5}{0}{2}
+\beamer@sectionintoc {3}{ Technological prototype}{17}{0}{3}
+\beamer@sectionintoc {4}{Future}{26}{0}{4}

@@ -1,0 +1,38 @@
+\begin{frame}
+  \begin{block}
+    \begin{columns}
+
+      \begin{column}{0.5\textwidth}
+        {\small 
+          Production and test of 
+          \par $ ~\rightarrow$ 50 chambers and cassettes  
+          \par $ ~\rightarrow$  8 storage racks used as cosmic muon stand
+        }
+      \end{column}
+      
+      \begin{column}{0.5\textwidth}
+      %  \centerline{\includegraphics[width=0.9\textwidth]{jpg/ConstructionRack.jpg}}
+      \end{column}
+    \end{columns}
+  \end{block}
+\end{frame}
+\begin{frame}
+  \begin{block}
+    \begin{columns}
+
+      \begin{column}{0.5\textwidth}
+        {\small 
+          Final integration at CERN
+          \par $ ~\rightarrow$ Mechanical structure developped by CIEMAT 
+          
+        }
+      \end{column}
+      
+      \begin{column}{0.5\textwidth}
+ %\centerline{\includegraphics[height=0.5\textheight]{jpg/ConstructionStructure.jpg}}
+%  \centerline{\includegraphics[height=0.5\textheight]{jpg/ConstructionInsertion.jpg}}
+
+      \end{column}
+    \end{columns}
+  \end{block}
+\end{frame}

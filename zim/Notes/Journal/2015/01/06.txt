@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-01-06T11:22:54+01:00
+
+====== Tuesday 06 Jan 2015 ======
+
+===== Résumé sur l'update de la Daq Tomuvol =====
+
+* Création d'un répertoire **TmvDb** qui contient une Class **TmvAccessSql**  qui permet d'ouvrir la base MySql du slow control , de démarrer et d'arrêter un run
+
+Exemple en C++:
+	TmvAccessSql a;
+	  std::stringstream sac;
+	  sac<<getenv("MYTMV");
+	  a.connect(sac.str());
+	// ou directement
+           // a.connect("root/rootpasswd@localhost:tmvdb");
+	  a.initRunTable(334457);
+	  sleep((unsigned int) 5);
+	  a.endRunTable();
+	
+
+L'interface python existe également et peut être incluse dans la classe **StartDaq** pour Tomuvol 
