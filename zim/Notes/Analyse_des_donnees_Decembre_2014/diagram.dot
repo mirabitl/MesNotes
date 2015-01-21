@@ -11,6 +11,13 @@ struct1 [label=<
 <tr><td>726412</td><td>40</td></tr>
 <tr><td>726413</td><td>30</td></tr>
 <tr><td>726414</td><td>20</td></tr>
+<tr><td>726252</td><td>15</td></tr>
+<tr><td>726289</td><td>25</td></tr>
+<tr><td>726307</td><td>35</td></tr>
+<tr><td>726335</td><td>45</td></tr>
+<tr><td>726339</td><td>55</td></tr>
+<tr><td>726371</td><td>65</td></tr>
+<tr><td>726377</td><td>75</td></tr>
 </TABLE>
 >];
 }

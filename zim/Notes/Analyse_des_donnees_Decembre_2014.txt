@@ -10,6 +10,9 @@ Le [[https://lyosvn.in2p3.fr/elog/ILC+Data+Square+Meter/|logbook]] contient le r
 
 {{./diagram.png?type=diagram}}
 
+
+Le run 726377 sembl etre a 70 GeV (ou le 408 a 75)
+
 ===== Coupures =====
 
 1. {{./equation.png?type=equation}}
