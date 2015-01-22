@@ -199,4 +199,59 @@ Only showers with more than 4 planes are kept adn a principal analysis is run re
 \gamma_2 = -4.792E-06 \pm 6.950E-08 
 \end{split}
  \end{equation}
+ 
+ 
+ Those calibration constants are then used to calibrated any selected shower. The energy distribution is then fitted with a Crystal ball parametrisation as shown on figure \ref{fig:CrystalBall}
+ \begin{figure}
+\includegraphics[  height=0.15\textheight]{Energy15_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy20_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy25_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy30_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy35_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy40_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy45_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy50_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy55_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy60_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy70_ROOFIT}
+\includegraphics[  height=0.15\textheight]{Energy80_ROOFIT}
+
+\caption{\label{fig:CrystalBall}Crystal ball fit of the hit distribution for pions from 15 to 80 GeV}
+
+
+\end{figure}
+
+Eventually we obtain th linearity and the associated resolution  seen on figure \ref{fig:resolution} and table  \ref{tab:resolution}
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+E & E rec &  dE & Linearity & Resolution \\
+\hline
+15.00 & 14.98 &  2.51 & -0.10 & 16.77  \\
+20.00 & 21.51 &  3.35 &  7.53 & 15.56 \\
+25.00 & 25.78 &  3.61 &  3.11 & 13.99 \\
+30.00 & 32.09 &  4.31 &  6.97 & 13.44 \\
+35.00 & 37.12 &  4.57 &  6.06 & 12.32 \\
+40.00 & 41.84 &  4.91 &  4.59 & 11.73 \\
+45.00 & 45.12 &  5.05 &  0.26 & 11.20 \\
+50.00 & 51.34 &  5.48 &  2.67 & 10.67 \\
+55.00 & 55.11 &  5.36 &  0.20 &  9.73 \\
+60.00 & 60.40 &  5.77 &  0.67 &  9.56 \\
+65.00 & 61.88 &  5.78 & -4.79 &  9.34 \\
+70.00 & 71.52 &  5.23 &  2.17 &  7.31 \\
+80.00 & 77.31 &  5.14 & -3.36 &  6.65 \\
+\hline
+
+\end{tabular}
+\caption{\label{tab:resolution} Linearity and energy resolkution achieved in December 2014}
+\end{table}
+\begin{figure}
+\includegraphics[  height=0.45\textheight]{LinearityDec2014}
+
+\includegraphics[  height=0.45\textheight]{ResolutionDec2014}
+\caption{\label{fig:resolution} Linearity and energy resolkution achieved in December 2014}
+
+
+\end{figure}
+
 \end{document}
