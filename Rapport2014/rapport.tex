@@ -1,0 +1,56 @@
+\documentclass[9pt,french]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage{graphicx}
+\usepackage{babel}
+%Gummi|065|=)
+\title{\textbf{Rapport d'activit\'e 2012-2014}}
+\author{Laurent Mirabito}
+\date{}
+\begin{document}
+
+\maketitle
+
+\section*{D\'eveloppement d'un prototype technologique de calorim\`etre hadronique semi-digitale}
+
+Le groupe de l'IPN Lyon a d\'ebut\'e en 2010 la construction d'un prototype de
+calorim\`etre hadronique Semi Digital (SDHCAL) constitu\'e de 50 chambres \`a plaques r\'esistives en verre (GRPC) de 1 m$^2$ intercal\'ees entre 50 plans de 2.8 cm d'absorbeur d'acier. 
+Chaque chambre GRPC est \'equip\'ee d'un plan de damiers d'un cm2 connect\'es \`a des ASICs de type
+HARDROC du groupe OMEGA du LAL contrôl\'es et lus par des cartes (DIF) d\'edi\'ees d\'evelopp\'ees au LAPP.
+
+Ce prototype, dont l'assemblage a fini en 2011, a fait l'objet de plusieurs campagnes de test sur faisceaux en 2011, 2012 et finalement 2014. Le d\'etecteur a \'et\'e expos\'e à des faisceaux de pions et d'\'electrons de 10 \`a 90 GeV/c. Mon travail dans ce cadre a \'et\'e d'une part de d\'evelopper les syst\`emes d'acquisition et de monitorage de donn\'ees et d'autre part la reconstruction et l'analyse des amas hadroniques dans le calorim\`etre.
+
+\subsection*{Syst\`eme d'acquisition}
+Le syst\`eme d'acquisition initialement pr\'evu en 2011 \'etait bas\'e sur un bus bidirectionnel autorisant l'envoi de l'horloge et de commandes (trigger,reset...) dans un sens et la collecte des donn\'ees et des v\'etos dans l'autre. Des probl\`emes dans l'int\'egrit\'e des donn\'ees collect\'ees nous ont amen\'e en 2012 \`a s\'eparer ces deux fonctions et \`a utiliser un bus USB de d\'everminage implant\'e sur la carte DIF pour la lecture des donn\'ees. L'ensemble des tests de 2012 ont \'et\'e r\'ealis\'es avec cette architecture. N\'eanmoins ce bus est de faible bande passante ($\le$ 10 Mbit/s) et contribue significativement au temps mort lors des prises de donn\'ees. Le d\'eveloppement en lieu et place  d'un adapteur USB2 (80 Mbit/s) nous a permis en 2014 d'am\'eliorer l'efficacit\'e d'acquisition de 7 a 20 \% et donc la statistique de donn\'ees collect\'ees. Une autre am\'elioration importante du point de vue de la fiabilit\'e et de la portabilit'e a \'et\'e le remplacement des 6 ordinateurs PC connect\'es \`a 22 Hub USB par des micro ordinateurs raspberry pi equip\'es de hub 12 ports d\'evelopp\'es \`a l'institut (figure \ref{rpi}). Ces micro ordinateurs, bas\'es sur de processeurs de t\'el\'ephone portable, sont \'economiques, de petites taille et de tr\`es basse consommation. Un processeur pour 4 chambres a ainsi pu \^etre accroch\'e au prototype optimisant d'une part le cablage et la manutention du d\'etecteur mais \'egalement les performances de la lecture des bus USB du fait du nombres r\'eduit de carte d'acquisition vu par chaque ordinateur. Cependant l'architecture de ces processeurs (ARM) diff\`ere de celle des PC standard et  l'environnement logiciel de CMS (XDAQ) utilis\'e jusqu'alors n'est pas disponible pour ceux-ci. J'ai d\^u par cons\'equent r\'e\'ecrire un syst\`eme d'acquistion complet bas\'e d\'esormais sur DIM (environnement logiciel de l'exp\'erience DELPHI). Cette nouvelle version de l'acquisition plus portable et plus l\'eg\`ere en terme d'installation a \'et\'e utilis\'ee sur tous les tests et mesures de 2013 et 2014. L'architecture et les performances sont d\'ecrites dans une note technique de CALICE sur le prototype SDHCAL en cours de r\'edaction.       
+\begin{figure}
+\centerline{\rotatebox{180}{\includegraphics[height=0.4\textheight]{./rpi.JPG}}}
+\caption{Micro ordinateur raspberry pi \'equip\'e d'un hub USB d\'evelopp\'e \`a l'IPNL }
+\label{rpi}
+\end{figure}
+\subsection*{Reconstruction des gerbes hadroniques}
+
+Outre les programmes d'\'ecriture et de pr\'efiltrage de donn\'ees edn temps que j'ai d\'evelopp\'e, j'ai \'egalement particip\'e \`a l'analyse des \'echantillons. Les deux points sur lesquels j'ai plus particuli\`erement contribu\'es sont d'une part l'\'etude de la topologie des \'evenements et d'autre part celle de la r\'esolution en \'energie. L'utilisation des calculs d'axes principaux des gerbes permet d'\'eliminer facilement la contamination de muons issu de faisceau ou de gerbe cosmique. La reconstruction d'\'e\'ement de traces \`a l'aide de technique de transform\'ee de Hough ou combinatoire permet d' \'eliminer les gerbes d'\'electrons contaminant l'\'echantillon. Ces caract\'eristiques topologiques sont ensuite utilis\'ees, combin\'ees avec les informations semi digitales pour am\'eliorer la r\'esolution en \'energie (comptage des hits, passant les 3 seuils). On obtient une r\'esolution comparable \`a celle obtenue dans la collaboration CALICE par le calorim\`etre hadronique analogique ($\simeq 7 \% $  pour des pions de 80 GeV). Ces r\'esultats on fait l'objet d'une note d'analyse CALICE \cite{can37}.   
+      
+\section*{ Application des chambres GRPC \`a la tomographie muonique des volcans (TOMUVOL)}
+
+L'exp\'erience TOMUVOL est un projet  de tomographie de volcan \`a l'aide de muons atmosph\'eriques commun \`a des laboratoires de l'IN2P3 (LPC et IPNL) et de l'INSU (LMV). En positionant un d\'etecteur \`a flan de volcan et en enregistrant l'incidence des muons le traversant on obtient une mesure de  l'att\'enuation du flux qui d\'epend  de la densit\'e des roches travers\'ees. Cette mesure, combin\'ee \`a des mesures plus classiques de vulcanologie, permet de dresser une cartographie densitom\`etrique pr\'ecise des volcans.
+
+La possibilit\'e de construire des d\'etecteurs de grande tailles, robuste, \`a faible co\^ut, et d'une pr\'ecison g\'eom\`etrique suffisante fait des GRPC des candidats int\`eressants pour cette mesure. Un premier t\'elescope constitu\'e de 2 chambres de 1 m$^2$ et d'une petite chambre de 0.16 m$^2$, a permis de valid\'e ce concept lors de deux campagnes de prises de donn\'ees au Puy de D\^ome en 2011 et 2012. Ces donn\'ees ont fait l'objet d'une publication \cite{gid}.  Notre contribution,\`a ce niveau du projet a \'et\'e essentielle puisque nous avons install\'e la quasi totalit\'e  de lappareillage \'exp\'erimentale et fournit les outils logiciels pour l'utiliser et analyser les donn\'ees.
+
+Depuis 2013, un prototype plus r\'ealiste de t\'elescope constitu\'e de 4 plans de 6 chambres de 0.16 m$^2$ a \'et\'e assembl\'e sous la maitrise d'oeuvre du LPC. Ma participation a principalement consist\'e en la mise \`a jour du syst\`eme d'acquisition du t\'elescope et des stations de tests des chambres ainsi qu'un support \`a la mise en oeuvre des prises de donn\'ees. Une nouvelle campagne de mesure vient de se terminer et un article est en cours de r\'edaction.
+
+Plusieurs d\'eveloppements int\'eressants restent ouverts. Il faut d'abord "tropicaliser" le d\'etecteur pour le rendre autonome sur de longues p\'eriodes dans des conditions climatiques vari\'ees (syst\`eme de s\^uret\'e ,ajustement des consomations \'electrique, des flux de donn\'ees...). D'autre part un certain nombre d'am\'eliorations ont envisageables, entre autres l'augmentation du nombre de plans en utilisant une \'electronique \`a pistes, ou la mesure des temps de vols pour minimiser le bruit de fond.      
+
+\section*{Utilisation de chambres GRPC pour la mise \`a niveau du syst\`eme de chambre a muons de CMS}
+
+
+
+\section*{Algorithmes de reconstruction de traces rapides pour le d\'eclenchement de premier niveau de CMS} 
+
+\begin{thebibliography}{2}
+   \bibitem[1]{can37} CALICE collaboration analysis note 037, 2014 
+   \bibitem[2]{gid} {\it Towards a muon radiography of the Puy de Dôme} - C. Cârloganu, V. Niess, S. Béné, E. Busato, P. Dupieux, F. Fehr, P. Gay, D. Miallier, B. Vulpescu, P. Boivin, C. Combaret, P. Labazuy, I. Laktineh, J.-F. Lénat, L. Mirabito, and A. Portal; 2012; GID Volume2, Number 2 Page(s) 765-780.L. LAMPORT, 
+   
+\end{thebibliography}
+
+\end{document}
