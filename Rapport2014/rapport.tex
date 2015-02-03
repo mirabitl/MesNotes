@@ -13,7 +13,7 @@
 
 \section*{D\'eveloppement d'un prototype technologique de calorim\`etre hadronique semi-digitale}
 
-Le groupe de l'IPN Lyon a d\'ebut\'e en 2010 la construction d'un prototype de
+Le groupe ILC de l'IPN Lyon a d\'ebut\'e en 2010 la construction d'un prototype de
 calorim\`etre hadronique Semi Digital (SDHCAL) constitu\'e de 50 chambres \`a plaques r\'esistives en verre (GRPC) de 1 m$^2$ intercal\'ees entre 50 plans de 2.8 cm d'absorbeur d'acier. 
 Chaque chambre GRPC est \'equip\'ee d'un plan de damiers d'un cm2 connect\'es \`a des ASICs de type
 HARDROC du groupe OMEGA du LAL contrôl\'es et lus par des cartes (DIF) d\'edi\'ees d\'evelopp\'ees au LAPP.
@@ -43,14 +43,16 @@ Plusieurs d\'eveloppements int\'eressants restent ouverts. Il faut d'abord "trop
 
 \section*{Utilisation de chambres GRPC pour la mise \`a niveau du syst\`eme de chambre a muons de CMS}
 
-
+D\'ebut 2012, un test sur un faisceau de haute intensit\'e de chambre GRPC constitu\'e de verre dop\'e de faible r\'esistivit\'e ( $ \simeq 10^{11} \Omega.cm) $ a d\'emontr\'e la stabilit\'e de collection de ces GRPC jusqu'\`a des flux de 10 kHz/cm$^2$ d'\'electron de 6 GeV \cite{desy}. Il a alors \'et\'e possible de proposer ces chambres comme une alternative aux chambres GEM pour equiper les stations avant de d\'etection de muons dans CMS lors de la mise \`a niveau de seconde phase en 2023. Lors de ces deux derni\`eres ann\'ees nous avons valid\'es ces d\'etecteurs lors de deux tests suppl\'ementaires. Quatres d\'etecteurs de 900 cm$^2$ equip\'es de chambres en verre dop\'e ont \'et\'e expos\'e \`a un haut flux de $\gamma$ au GIF au CERN durant plus de six mois, l'efficacit\'e de d\'etection de muons cosmique \'etant continuellement contr\^ol\'ee. La stabilit\'e de l'efficacit\'e de d\'etection a \'et\'e confirm\'e mais plusieurs probl\`emes dans les syst\`emes de gaz, de haute tension ou dans la construction des chambres nous am\`ene \`a r\'epeter cette mesure en 2015 sur la nouvelle facilit\'e d'irradiation du CERN (GIF++) avant de pouvoir publier ces r\'esultats. Un second test au mois d'Ao\^ut 2014 sur un faisceau de pion de basse \'energie a confirm\'e les mesures du test \`a DESY. Il nous a permis de tester ces chambres dans une configuration plus proche de celle envisag\'ee pour CMS: au lieu d'un plan damiers collectant les charges d'une chambre, un circuit imprim\'e grav\'e de 128 pistes sur ces deux faces collecte les charges de deux chambres simultan\'ement. La lecture des pistes etait r\'ealis\'ee par les m\^eme chips HardRoc2 .Les pistes \'etaient \'egalement lues par groupe de 64 de mani\'ere analogique \`a l'autre extr\'emit'e et un TDC d\'evelopp\'e par le groupe \'electronique de l'IPNL \'etait impl\'ement\'e dans le FPGA de la carte de lecture afin de tester les capacit\'es  de mesure de temps des d\'etecteurs. Plusieurs d\'eveloppements (chambres multigap, TDC, utilisation de chips PETIROC d\'evelopp\'e par Omega) sont en cours pour proposer une mesure pr\'ecise ($\le$ 50 ps) du temps dans ces chambres. Outre une r\'eduction massive du bruit de fond combinatoire cela permettrait une mesure pr\'ecise de la coordonn\'ee transverse.            
 
 \section*{Algorithmes de reconstruction de traces rapides pour le d\'eclenchement de premier niveau de CMS} 
 
 \begin{thebibliography}{2}
    \bibitem[1]{can37} CALICE collaboration analysis note 037, 2014 
    \bibitem[2]{gid} {\it Towards a muon radiography of the Puy de Dôme} - C. Cârloganu, V. Niess, S. Béné, E. Busato, P. Dupieux, F. Fehr, P. Gay, D. Miallier, B. Vulpescu, P. Boivin, C. Combaret, P. Labazuy, I. Laktineh, J.-F. Lénat, L. Mirabito, and A. Portal; 2012; GID Volume2, Number 2 Page(s) 765-780.L. LAMPORT, 
-   
+   \bibitem[3]{desy}{\it High-rate glass resistive plate chambers for LHC muon detectors upgrade}
+  I.~Laktineh, L.~Caponetto, S.~Cauwenbergh, C.~Combaret, I.~Crotty, Y.~Haddad, G.~Grenier and R.~Guida {\it et al.}. 10.1109/NSSMIC.2012
+
 \end{thebibliography}
 
 \end{document}
