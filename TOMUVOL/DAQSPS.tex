@@ -15,14 +15,14 @@
 \section{Architecture}
 
 \subsection{PC names and role}
-The acquisition is based on 4 RaspberryPI micro computers controlling and reading each the 6 DIFs connected on each of the 4 planes: {\sl \bf clrtorp1-prive, clrtorp2-prive, clrtorp3-prive, clrtorp4-prive}. Data are collected and written to disk on the linux PC {\sl clrtodaq0-prive}.
+The acquisition is based on 15 RaspberryPI micro computers controlling and reading each the 12 DIFs connected on each of the 4 planes: {\sl \bf lyoilcrpiXX , withh XX in [03 -13,14,15,19]}. Data are collected and written to disk on the linux PC {\sl lyosdhcal8}.
 
-The 4 RPIs are responsible for chip configurations, DIF control and data readout. {\sl \bf clrtorp2-prive} is also handling the control of the SDCC. The central PC is in charged of the configuration database access, the data collection, the event building and writing and the human interface instance
+The 15 RPIs are responsible for chip configurations, DIF control and data readout. {\sl \bf lyoilcrpi17} is also handling the control of the SDCC. The central PC is in charged of the configuration database access, the data collection, the event building and writing and the human interface instance
 
-Since DIM is the network framework used in this data acquisition, the DIM DNS must be stated once {\sl \bf clrtodaq0-prive} with
+Since DIM is the network framework used in this data acquisition, the DIM DNS must be stated once {\sl \bf lyosdhcal8} with
 \begin{verbatim}
 killall -9 dns
-export DIM_DNS_NODE=clrtodaq0-prive
+export DIM_DNS_NODE=lyosdhcal8
 /opt/xdaq/bin/dns &>/dev/null &
 \end{verbatim}
 
@@ -66,9 +66,6 @@ It also publishes 3 services per DIF:
 \item {\bf DATA}: the last DIF data buffer read. 
 \end{itemize}
 
-\subsubsection{Possible issue}
-
-On INITIALISE the USB access may have changed (micro power cut), in this case the daemon exits and dies (open failed in the log).  It has to be restarted.
 
 \subsection{SDCC control}
 
@@ -100,7 +97,7 @@ and it can be stoped with
 \item { \bf TESTREGISTERWRITE }: requires an integer value that is written in the test register
 \end{itemize}
 
-It publishes 2 DIM services, {\bf REGISTER} that is filled when TESTREGISTERREAD is called and an integer {\bf STATUS} which value is changed depending on the last command received.
+It publishes 2 DIM services,{\bf REGISTER} that is filled when TESTREGISTERREAD is called and an integer {\bf STATUS} which value is changed depending on the last command received.
  
 \subsubsection{Possible issue}
 
@@ -160,6 +157,7 @@ to collect run number and DIF data. In case of failure, please exit cleanly the 
 
 \section {DAQ control}
 
+The DAQ control is done on the main console loggin on lyoilcbpi01 . There is a graphical interface and it will be desribe later on but the underlying control is done by the DimDaqControl package.
 
 \subsection{ The DimDaqControl package }
 The control of the DAQ is done via { \bf \sl DimDaqControl } a standalone DIM program interfaced to python. The python package LSDHCALDimCtrl  is in {\sl /data/online/SDHCAL/DimCtrl}. The environment needs to be set properly with:
@@ -202,15 +200,74 @@ Inside the python shell launched you can do the following:
 \end{enumerate} 
 
 The red commands needs to be used only once per session. The blue ones should be used once or if any changes has occurred on dimdif servers (power cycle for example). The purple ones are used to reconfigure chips. The green ones are the normal one to start and stop a run. Eventually the black commands are optional, the {\bf download} one must be called at least ones to access the DB but is not needed in a new session if the dimdb server is alive and already contains the state 
+
+\subsection{ The StartDaq package }
+The {\bf \sl StartDaq} pacakge embedded the { \bf \sl DimDaqControl }  and add hosts managment, LV and HV control. It can be started directly in python on lyoilcbpi01. It uses a configuration file to handle the host managment and set the DB and trigger parameter. An exemple is found in SDHCAL/config\_m3.py:
+
+\begin{verbatim}
+
+host=['lyoilcrpi03','lyoilcrpi04','lyoilcrpi05','lyoilcrpi06','lyoilcrpi07','lyoilcrpi08',
+'lyoilcrpi09','lyoilcrpi10','lyoilcrpi11','lyoilcrpi12','lyoilcrpi14','lyoilcrpi15',
+'lyoilcrpi19','lyoilcrpi13']
+ccc='lyoilcrpi17'
+db='lyosdhcal8'
+writer='lyosdhcal8'
+register=0x89580000
+# 115 + petit seup
+state="Dome_42chambres_Reference_v4_145"
+# Novermber 2012 state="Dome_42chambres_Reference_v4_115"
+# November 2012 + masks state="Dome_42chambres_Reference_v4_144"
+directory="/data/NAS/December2014"
+
+\end{verbatim}
+
+
+Inside the python shell launched you can do the following:
+
+\begin{enumerate} 
+\item \textcolor{red}{ \bf  import StartDaq} :  imports the python package
+
+\item \textcolor{red}{\it \bf s=StartDaq.StartDaq("config\_m3")}:  creates an instance of StartDaq withc the config\_m3.py files
+
+\item \textcolor{red}{\it \bf s.host\_start()}: starts DIM daemon on all hosts list in config.host,config.ccc,config.db and config.writer names 
+\item \textcolor{red}{\it \bf s.host\_stop()}: stops DIM daemon on all hosts list in config.host,config.ccc,config.db and config.writer names
+ \item \textcolor{red}{\it \bf s.rpi\_start()}: starts DIM daemon on all hosts list in config.host
+\item \textcolor{red}{\it \bf s.rpi\_stop()}: stops DIM daemon on all hosts list in config.host
+\item \textcolor{red}{\it \bf s.synchronizeRPI()}: copy local version (lyoilcbpi01) /opt/dhcal/lib,bin contents  to all hosts list in config.host. rpi\_stop needs to be called before and rpi\_start after
+\item \textcolor{red}{\it \bf s.initialiseWriter("/data/online/Results")}: Initialise the data writing on the given directory. It has to be done only once if the dimwriter daemon is not stopped.
+
+\item \textcolor{blue}{\it \bf s.scan()}: sends a SCANDEVICES command to all dimdif servers and wait for DEVICES service update. It must be called once or after a destroy()
+
+
+\item \textcolor{blue}{\it {\bf s.initialise()}}: sends an INITIALISE command to all DIF found previously
+\item {\bf s.\_print()}: prints the status of each DIF on each dimdif server from the INFO service of each given DIF. Like the scan() command it must be called only after a scan() command
+
+\item {\bf s.download("LPCC\_230")}: triggers the DELETE of the previous state in the DB server and the DOWNLOAD of the specified state. Since no semaphore mechanism is used in this command a 20 s delay may be needed before the data are available. It has to be called only when a new DB state needs to be downloaded or when the dimdb daemon is restarted
+
+\item \textcolor{purple}{\bf s.registerstate(0x815A1B00,"LPCC\_230")}: send a REGISTERSTATE command to all dimdif server. The state specified should be identical to the last downloaded state in dimdb. It must be called before configure to also set the control register.
+
+\item \textcolor{purple}{\bf s.configure()}: sends a CONFIGURE command to all dimdif servers
+
+
+
+
+\item \textcolor{green}{\bf s.start()}: starts a run, sends a START command to the dimccc, the dimdif and the dimwriter servers 
+
+\item \textcolor{green}{\bf s.stop()}: stops a run,sends a STOP command to the dimccc, the dimdif and the dimwriter servers
+\item \textcolor{blue}{\bf s.destroy()}: send a DESTROY command to the dimdif servers. All the DIF handling are cleared locally so the only possible next command is scan()
+\end{enumerate} 
+
+The red commands needs to be used only once per session. The blue ones should be used once or if any changes has occurred on dimdif servers (power cycle for example). The purple ones are used to reconfigure chips. The green ones are the normal one to start and stop a run. Eventually the black commands are optional, the {\bf download} one must be called at least ones to access the DB but is not needed in a new session if the dimdb server is alive and already contains the state 
+
+
 \subsection{Spying with webDid}
 The latest versions of DIM provide a web interface to all DIM servers and clients. The server is started with:
 \begin{verbatim}
-export DIM_DNS_NODE=clrtodaq0-prive
-export LD_LIBRARY_PATH=${HOME}/dim_v20r9/linux:$LD_LIBRARY_PATH
-~/dim_v20r9/WebDID/webDid
+export DIM_DNS_NODE=lyosdhcal8
+/opt/dhcal/dimWebDID/webDid
 \end{verbatim}
 
-Then the interface can be accessed via a web browser at address http://clrtodaq0-prive:2500 as seen on figure \ref{webdid}
+Then the interface can be accessed via a web browser at address http://lyosdhcal8:2500 as seen on figure \ref{webdid}
 \begin{figure}[htp]
 \centering
 \includegraphics[width=1.3\textwidth]{./webDid.png}

@@ -227,6 +227,71 @@ In case of problem, after exiting the python shell, one can restart the dns and 
 \end{verbatim}
 It restarts all needed daemons
 
+\subsection{The TomDaq package}
+
+A  much simpler python interface can be found on {\bf clrtodaq1} in SDHCAL/python directory. The TomDaq class embbeded the previous calls in few commands. It requires a configuration file, an exemple {\sl config\_tomuvol.py }can be found in the python directory:
+\begin{verbatim}
+
+# List of raspberry holding DIF server
+host=["clrtorp3.in2p3.fr"]
+# host holding CCC server
+ccc="clrtorp3.in2p3.fr"
+# Host holding DB server
+db="clrtodaq1.in2p3.fr"
+# Host holding LCIO writer
+writer="clrtodaq1.in2p3.fr"
+
+# Trigger register 
+register=0x815A1B00
+
+# DB state
+state="LPCC_265"
+
+# Directory where LCIO files are writen
+directory="/tmp"
+
+# Mysql account where to store Run start/stop
+mysqlaccount="root/@localhost:tmvsrvd"
+
+\end{verbatim}
+
+
+The usage is then simplified:
+Inside the python shell launched you can do the following:
+
+\begin{enumerate} 
+\item \textcolor{red}{ \bf  import TomDaq} :  imports the python package
+
+\item \textcolor{red}{\it \bf t=TomDaq.TomDaq("config\_tomuvol")}:  it parses config\_tomuvol.py and creates an instance of TomDaq. It creates an instance of DImDaqControl and the connection to the mysql database.
+
+\item \textcolor{red}{\it \bf t.Discover()}: lists all DIMServer, services and commands available on the DIM DNS. It also triggers the download of the DB state and the initialisation of the LCIO writing
+  
+
+\item \textcolor{blue}{\it {\bf t.Initialise()}}: it combines the SCNA and INITIALISE commands of the DimDaqControl
+
+\item {\bf t.Print()}: prints the status of each DIF on each dimdif server from the INFO service of each given DIF. Like the scan() command it must be called only after a scan() command
+
+
+
+\item \textcolor{purple}{\bf t.Configure()}: it combines REGISTERSTATE and CONFIGURE commands to all dimdif servers
+
+
+
+
+\item \textcolor{green}{\bf s.Start()}: starts a run, sends a START command to the dimccc, the dimdif and the dimwriter servers. It also update the Mysql DB for a new run 
+
+\item \textcolor{green}{\bf s.Stop()}: stops a run,sends a STOP command to the dimccc, the dimdif and the dimwriter servers. It also update the Mysql DB for the end of run 
+\item \textcolor{blue}{\bf s.Destroy()}: send a DESTROY command to the dimdif servers. All the DIF handling are cleared locally so the only possible next command is Initialise()
+
+\item \textcolor{red}{\it \bf t.host\_stop()}: it stops all DIM servers (dif,ccc,db,writer)
+
+\item \textcolor{red}{\it \bf t.host\_start()}: it starts all DIM servers (dif,ccc,db,writer)
+
+\item \textcolor{red}{\it \bf t.host\_status()}: it prints the status of all DIM servers (dif,ccc,db,writer)
+
+\item \textcolor{red}{\it \bf t.host\_restart()}: it stops, starts and prints the status of all DIM server
+
+\end{enumerate} 
 
 \end{document}
 
