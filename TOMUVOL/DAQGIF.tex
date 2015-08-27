@@ -5,24 +5,166 @@
 \usepackage{babel}
 \usepackage{xcolor}
 %Gummi|065|=)
-\title{\textbf{TOMUVOL DAQ based on DIM}}
+\title{\textbf{GIF++ DAQ based on DIM}}
 \author{L.Mirabito}
 \date{}
 \begin{document}
 
 \maketitle
+\section{Slow Control}
+\subsection{Processes configuration}
+The processes are driven via a unique daemon running on each connected PC called the job control. It's a dim server that has to be started once on each considered computer. If one computer crash it's the only needed process to restart.
+\subsubsection{DimJobControl}
 
-\section{Architecture}
+On each slow control computer the process is started by
+\begin{verbatim}
+sudo /etc/init.d/dimjcd start
+\end{verbatim}
+The usual stop and status options are available.
+
+\subsubsection{Controlling slow control process}
+
+A DimJobInterface program allows to start and stop process on all connected computer via the DimJobControl daemon. It is based ona JSON description of the needed process.
+
+Here is the one used at GIF++ in August 2015. The structure is simple and self-describing.
+
+
+\begin{verbatim}
+{
+    "hosts" :
+    {
+        "lyosdhcal11":[
+            {
+            "Name":"CAENSERVER",
+                "Arguments" : ["-f /data/NAS/toto.slcio","-c MONCOLLECTOR"],
+            "Environnement" : [
+                "DIM_DNS_NODE=lyosdhcal11",
+                "SLOWDB=acqilc/RPC_2008@lyosdhcal11:GIFPP2015;GIFLYON2",
+                "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
+            ],
+            "Program" : "/opt/dhcal/bin/dimcaenhv"
+            }         
+        ],
+        "lyoilcrpi24":[
+            {
+            "Name":"BMP183SERVER",
+                "Arguments" : ["-f /data/NAS/toto.slcio","-c MONCOLLECTOR"],
+            "Environnement" : [
+                "DIM_DNS_NODE=lyosdhcal11",
+                "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
+            ],
+            "Program" : "/opt/dhcal/bin/dimbmp183"
+            }         
+        ],
+// Test avec 2 programmes
+        "lyoilcrpi02":[
+            // GPIO
+            {
+                "Name":"GPIOSERVER",
+                "Arguments" : [],
+                "Environnement" : [
+                    "DIM_DNS_NODE=lyosdhcal11",
+                    "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
+                ],
+                "Program" : "/opt/dhcal/bin/dimgpio"
+            },
+            // DS1820
+            {
+                "Name":"DS1820SERVER",
+                "Arguments" : [],
+                "Environnement" : [
+                    "DIM_DNS_NODE=lyosdhcal11",
+                    "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
+                ],
+                "Program" : "/opt/dhcal/bin/dimds1820"
+            }          
+        ]
+    }
+}
+
+\end{verbatim}
+
+The DimJobInterface belongs to the python package Ldimjc. It has few methods to start, stop and list processes belonging to the description file.
+\subsubsection{Usage}
+On lyosdhcal11 with DIM\_DNS\_NODE correctly defined the DimJobInterface is instantiated in python with
+\begin{verbatim}
+>>>import Ldimjc
+>>> dsc=Ldimjc.DimJobInterface()
+\end{verbatim}
+
+Then a set of commands allows to control the process:
+\begin{itemize} 
+\item \textcolor{red}{ \bf  import Ldimjc} :  imports the python package
+
+\item \textcolor{red}{\it \bf dsc=Ldimjc.DimJobInterface()}: It creates the interface 
+
+\item \textcolor{red}{\it \bf dsc.loadJSON("slow\_conf.json")}: It loads and parses the given files, scan the DNS to have the list of DimJobControl daemon   
+
+\item \textcolor{red}{\it \bf dsc.startJobs("lyoilcrpi02")}: it starts the jobs described in the configuration on the given host. If the host is "ALL", theb all the jobs desribed in the file are started. 
+\item \textcolor{red}{\it \bf dsc.clearHostJobs("lyoilcrpi02"}: it kills all the jobs started on lyoilcrpi02 or on any host given
+ \item \textcolor{red}{\it \bf dsc.clearAllJobs()}: it kills all jobs on all hosts
+\item \textcolor{blue}{\it \bf dsc.status()}: it queries the status of all the jobs on all hosts.
+\item \textcolor{blue}{\it \bf dsc.List()}: it prints the last queried status
+\item \textcolor{blue}{\it \bf dsc.killJob("lyoilcrpi02",2934,9)}: it kills the job with PID 2934 on host lyoilcrpi02 with signal 9. The host and PID is found with the previous List command
+
+\item \textcolor{blue}{\it \bf dsc.restartJob("lyoilcrpi02","DS1820SERVER",2934, 9)}: it sends a killJob message to PID 2934 on lyoilcrpi02 with signal 9 and restart the process described on this host as DS1820SERVER in the configuration file.
+
+
+\end{itemize} 
+\subsection{Slow control database}
+\subsection{Control and Measure}
+Each of the process described in the slow\_conf.json configuration file is controlling a different hardware:
+\begin{itemize}
+\item {\bf CAENSERVER }: it runs on lyosdhcal11 and connects the mysql database specified in the SLOWDB variable. The SETUP used in the GIFPP2015 database is GIFLYON2 in this case. On initialise it queries the detector connected, the corresponding HVRACK and connect to the CAEN SY1527 specified there. It uses the SETUP to monitor and/or regulate the detector channels. It provides also single channel access to change manually high voltage and current limit. 
+
+\item {\bf GPIOSERVER}: it runs on lyoilcrpi02 and controls the switch of the low voltage power supplies of the SDCC VME card and of all the DIFs
+
+\item {\bf DS1820SERVER}: it runs on lyoilcrpi02 adn read 2 DS1820 temperature probes. The first one is in the box, the second is on the detector rack. The periodicity of the readout is available and data can be store in the mysql database in the table DS1820MON
+
+\item {\bf BMP183SERVER}: it runs on lyoilcrpi24 that is connected outside the zone near the SY1527 rack. It measure the pressure and the temperature with a BMP183 Bosch device. Once again the periodicty of the readout can be controlled and the data can be stored in the mysql database in the PTMON table
+\end{itemize}
+
+Once again a python package LMainSlowControl is available to control all those processes:
+\begin{itemize}
+\item \textcolor{red}{ \bf  import LMainSlowControl} :  imports the python package
+\item \textcolor{red}{d=LMainSlowControl.DimSlowControl("lyosdhcal11.cern.ch")}: it creates the interface with the DNS lyosdhcal11.cern.ch
+\item \textcolor{red}{d.scandns() } it scans the DNS and discover services 
+\item \textcolor{red}{d.CAENHVRead(48)}
+\item \textcolor{red}{d.getCurrentHVChannel()}
+\item \textcolor{red}{d.getCurrentHVVoltageRead()}
+\item \textcolor{red}{d.getCurrentHVCurrentRead()}
+\item \textcolor{red}{d.getCurrentHVVoltageSet()}
+\item \textcolor{red}{d.CAENHVSetOn(49)}
+\item \textcolor{red}{d.CAENHVSetOff(49)}
+\item \textcolor{red}{d.CAENHVSetVoltage(48,3300)}
+\item \textcolor{red}{d.CAENHVSetCurrent(48,50)}
+\item \textcolor{red}{d.CAENHVStartRegulation(60)}
+\item \textcolor{red}{d.CAENHVStartMonitor(120)}
+\item \textcolor{red}{d.CAENHVStopRegulation()}
+\item \textcolor{red}{d.CAENHVStopMonitor()}
+\item \textcolor{red}{d.BMP183SetPeriod(30)}
+\item \textcolor{red}{d.BMP183Store("acqilc/RPC\_2008@lyoac30.cern.ch:GIFPP2015")}
+\item \textcolor{red}{d.DS1820SetPeriod(30)}
+\item \textcolor{red}{d.DS1820Store("acqilc/RPC\_2008@lyoac30.cern.ch:GIFPP2015")}
+\item \textcolor{red}{d.OpenGPIO()}
+\item \textcolor{red}{d.VMEOn()}
+\item \textcolor{red}{d.VMEOff()}
+\item \textcolor{red}{d.DIFOn()}
+\item \textcolor{red}{d.DIFOff()}
+\item \textcolor{red}{d.CloseGPIO()}
+
+\end{itemize}
+\section{DAQ Architecture}
 
 \subsection{PC names and role}
-The acquisition is based on 15 RaspberryPI micro computers controlling and reading each the 12 DIFs connected on each of the 4 planes: {\sl \bf lyoilcrpiXX , withh XX in [03 -13,14,15,19]}. Data are collected and written to disk on the linux PC {\sl lyosdhcal8}.
+The acquisition is based on 1 RaspberryPI micro computer controlling and reading up to 9 DIFs connected on each of the 7 planes: {\sl \bf lyoilcrpi02}. Data are collected and written to disk on the linux PC {\sl lyosdhcal11}.
 
-The 15 RPIs are responsible for chip configurations, DIF control and data readout. {\sl \bf lyoilcrpi17} is also handling the control of the SDCC. The central PC is in charged of the configuration database access, the data collection, the event building and writing and the human interface instance
+The  RPI is responsible for chip configurations, DIF control and data readout. {\sl \bf lyoilcrpi02} is also handling the control of the SDCC. The central PC is in charged of the configuration database access, the data collection, the event building and writing and the human interface instance
 
-Since DIM is the network framework used in this data acquisition, the DIM DNS must be stated once {\sl \bf lyosdhcal8} with
+Since DIM is the network framework used in this data acquisition, the DIM DNS must be stated once {\sl \bf lyosdhcal11} with
 \begin{verbatim}
 killall -9 dns
-export DIM_DNS_NODE=lyosdhcal8
+export DIM_DNS_NODE=lyosdhcal11
 /opt/xdaq/bin/dns &>/dev/null &
 \end{verbatim}
 
@@ -157,7 +299,7 @@ to collect run number and DIF data. In case of failure, please exit cleanly the 
 
 \section {DAQ control}
 
-The DAQ control is done on the main console loggin on lyoilcbpi01 . There is a graphical interface and it will be desribe later on but the underlying control is done by the DimDaqControl package.
+The DAQ control is done on the main console loggin on lyosdhcal11 . There is a graphical interface and it will be desribe later on but the underlying control is done by the DimDaqControl package.
 
 \subsection{ The DimDaqControl package }
 The control of the DAQ is done via { \bf \sl DimDaqControl } a standalone DIM program interfaced to python. The python package LSDHCALDimCtrl  is in {\sl /data/online/SDHCAL/DimCtrl}. The environment needs to be set properly with:
@@ -206,18 +348,16 @@ The {\bf \sl StartDaq} pacakge embedded the { \bf \sl DimDaqControl }  and add h
 
 \begin{verbatim}
 
-host=['lyoilcrpi03','lyoilcrpi04','lyoilcrpi05','lyoilcrpi06','lyoilcrpi07','lyoilcrpi08',
-'lyoilcrpi09','lyoilcrpi10','lyoilcrpi11','lyoilcrpi12','lyoilcrpi14','lyoilcrpi15',
-'lyoilcrpi19','lyoilcrpi13']
-ccc='lyoilcrpi17'
-db='lyosdhcal8'
-writer='lyosdhcal8'
-register=0x89580000
+host=['lyoilcrpi02']
+ccc='lyoilcrpi02'
+db='lyosdhcal11'
+writer='lyosdhcal11'
+register=0x815A1B00
 # 115 + petit seup
-state="Dome_42chambres_Reference_v4_145"
+state="GIFSPS_57"
 # Novermber 2012 state="Dome_42chambres_Reference_v4_115"
 # November 2012 + masks state="Dome_42chambres_Reference_v4_144"
-directory="/data/NAS/December2014"
+directory="/data/NAS/GIF2015"
 
 \end{verbatim}
 
@@ -233,7 +373,7 @@ Inside the python shell launched you can do the following:
 \item \textcolor{red}{\it \bf s.host\_stop()}: stops DIM daemon on all hosts list in config.host,config.ccc,config.db and config.writer names
  \item \textcolor{red}{\it \bf s.rpi\_start()}: starts DIM daemon on all hosts list in config.host
 \item \textcolor{red}{\it \bf s.rpi\_stop()}: stops DIM daemon on all hosts list in config.host
-\item \textcolor{red}{\it \bf s.synchronizeRPI()}: copy local version (lyoilcbpi01) /opt/dhcal/lib,bin contents  to all hosts list in config.host. rpi\_stop needs to be called before and rpi\_start after
+
 \item \textcolor{red}{\it \bf s.initialiseWriter("/data/online/Results")}: Initialise the data writing on the given directory. It has to be done only once if the dimwriter daemon is not stopped.
 
 \item \textcolor{blue}{\it \bf s.scan()}: sends a SCANDEVICES command to all dimdif servers and wait for DEVICES service update. It must be called once or after a destroy()
@@ -263,11 +403,11 @@ The red commands needs to be used only once per session. The blue ones should be
 \subsection{Spying with webDid}
 The latest versions of DIM provide a web interface to all DIM servers and clients. The server is started with:
 \begin{verbatim}
-export DIM_DNS_NODE=lyosdhcal8
+export DIM_DNS_NODE=lyosdhcal11
 /opt/dhcal/dimWebDID/webDid
 \end{verbatim}
 
-Then the interface can be accessed via a web browser at address http://lyosdhcal8:2500 as seen on figure \ref{webdid}
+Then the interface can be accessed via a web browser at address http://lyosdhcal11:2500 as seen on figure \ref{webdid}
 \begin{figure}[htp]
 \centering
 \includegraphics[width=1.3\textwidth]{./webDid.png}
@@ -276,125 +416,33 @@ Then the interface can be accessed via a web browser at address http://lyosdhcal
 \end{figure}
 
 Commands can be sent manually but spying of dynamiclly allocated infos (like the DID DATA service) should be avoided since it crashes the program. 
-\subsection{Other tips}
-\subsubsection{Restarting the whole daq}
-In case of problem, after exiting the python shell, one can restart the dns and launch
+\subsection{Graphical interface}
+\subsubsection{Starting}
 \begin{verbatim}
-~/startdimdaq
-\end{verbatim}
-It restarts all needed daemons
-
-\section{Slow Control}
-\subsection{Processes configuration}
-The processes are driven via a unique daemon running on each connected PC called the job control. It's a dim server that has to be started once on each considered computer. If one computer crash it's the only needed process to restart.
-\subsubsection{DimJobControl}
-
-On each slow control computer the process is started by
-\begin{verbatim}
-sudo /etc/init.d/dimjcd start
-\end{verbatim}
-The usual stop and status options are available.
-
-\subsubsection{Controlling slow control process}
-
-A DimJobInterface program allows to start and stop process on all connected computer via the DimJobControl daemon. It is based ona JSON description of the needed process.
-
-Here is the one used at GIF++ in August 2015. The structure is simple and self-describing.
-
-
-\begin{verbatim}
-{
-    "hosts" :
-    {
-        "lyosdhcal11":[
-            {
-            "Name":"CAENSERVER",
-                "Arguments" : ["-f /data/NAS/toto.slcio","-c MONCOLLECTOR"],
-            "Environnement" : [
-                "DIM_DNS_NODE=lyosdhcal11",
-                "SLOWDB=acqilc/RPC_2008@lyosdhcal11:GIFPP2015;GIFLYON2",
-                "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
-            ],
-            "Program" : "/opt/dhcal/bin/dimcaenhv"
-            }         
-        ],
-        "lyoilcrpi24":[
-            {
-            "Name":"BMP183SERVER",
-                "Arguments" : ["-f /data/NAS/toto.slcio","-c MONCOLLECTOR"],
-            "Environnement" : [
-                "DIM_DNS_NODE=lyosdhcal11",
-                "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
-            ],
-            "Program" : "/opt/dhcal/bin/dimbmp183"
-            }         
-        ],
-// Test avec 2 programmes
-        "lyoilcrpi02":[
-            // GPIO
-            {
-                "Name":"GPIOSERVER",
-                "Arguments" : [],
-                "Environnement" : [
-                    "DIM_DNS_NODE=lyosdhcal11",
-                    "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
-                ],
-                "Program" : "/opt/dhcal/bin/dimgpio"
-            },
-            // DS1820
-            {
-                "Name":"DS1820SERVER",
-                "Arguments" : [],
-                "Environnement" : [
-                    "DIM_DNS_NODE=lyosdhcal11",
-                    "LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH"
-                ],
-                "Program" : "/opt/dhcal/bin/dimds1820"
-            }          
-        ]
-    }
-}
-
+cd SDHCAL/python
+python SDaqImpl.py
 \end{verbatim}
 
-The DimJobInterface belongs to the python package Ldimjc. It has few methods to start, stop and list processes belonging to the description file.
-\subsubsection{Usage}
-On lyosdhcal11 with DIM\_DNS\_NODE correctly defined the DimJobInterface is instantiated in python with
-\begin{verbatim}
->>>import Ldimjc
->>> dsc=Ldimjc.DimJobInterface()
-\end{verbatim}
+This graphical interface is just a user friendly interface to the StartDaq package, each button corresponds to the call of one method. The figure \ref{SDaqImpl1},\ref{SDaqImpl2}, and \ref{SDaqImpl3} shows the various panel with the sequence of call of each method.
+\begin{figure}[htp]
+\centering
+\includegraphics[width=1.\textwidth]{./SDaqImpl1.png}
+\caption{Process control panel. Restart host can be called after createDaq and can be called again after a DAQ destroy but must be followed by the step 2,3 and 4}
+\label{SDaqImpl1}
+\end{figure}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=1.\textwidth]{./SDaqImpl2.png}
+\caption{Daq control panel. Initialise must be called after Destroy. After a Stop, Configure (parameter reload) or Start can be called}
+\label{SDaqImpl2}
+\end{figure}
+\begin{figure}[htp]
+\centering
+\includegraphics[width=1.\textwidth]{./SDaqImpl3.png}
+\caption{Monitoring Panel. RefreshList gives the list of histograms and access to an expanding tree of histograms. Doble-clicked on a histogram to display}
+\label{SDaqImpl3}
+\end{figure}
 
-Then a set of commands allows to control the process:
-\begin{itemize} 
-\item \textcolor{red}{ \bf  import Ldimjc} :  imports the python package
-
-\item \textcolor{red}{\it \bf dsc=Ldimjc.DimJobInterface()}: It creates the interface 
-
-\item \textcolor{red}{\it \bf dsc.loadJSON("slow\_conf.json")}: It loads and parses the given files, scan the DNS to have the list of DimJobControl daemon   
-
-\item \textcolor{red}{\it \bf dsc.startJobs("lyoilcrpi02")}: it starts the jobs described in the configuration on the given host. If the host is "ALL", theb all the jobs desribed in the file are started. 
-\item \textcolor{red}{\it \bf dsc.clearHostJobs("lyoilcrpi02"}: it kills all the jobs started on lyoilcrpi02 or on any host given
- \item \textcolor{red}{\it \bf dsc.clearAllJobs()}: it kills all jobs on all hosts
-\item \textcolor{blue}{\it \bf dsc.status()}: it queries the status of all the jobs on all hosts.
-\item \textcolor{blue}{\it \bf dsc.List()}: it prints the last queried status
-\item \textcolor{blue}{\it \bf dsc.killJob("lyoilcrpi02",2934,9)}: it kills the job with PID 2934 on host lyoilcrpi02 with signal 9. The host and PID is found with the previous List command
-
-\item \textcolor{blue}{\it \bf dsc.restartJob("lyoilcrpi02","DS1820SERVER",2934, 9)}: it sends a killJob message to PID 2934 on lyoilcrpi02 with signal 9 and restart the process described on this host as DS1820SERVER in the configuration file.
-
-
-\end{itemize} 
-\subsection{Control and Measure}
-Each of the process described in the slow\_conf.json configuration file is controlling a different hardware:
-\begin{itemize}
-\item {\bf CAENSERVER }: it runs on lyosdhcal11 and connects the mysql database specified in the SLOWDB variable. The SETUP used in the GIFPP2015 database is GIFLYON2 in this case. On initialise it queries the detector connected, the corresponding HVRACK and connect to the CAEN SY1527 specified there. It uses the SETUP to monitor and/or regulate the detector channels. It provides also single channel access to change manually high voltage and current limit. 
-
-\item {\bf GPIOSERVER}: it runs on lyoilcrpi02 and controls the switch of the low voltage power supplies of the SDCC VME card and of all the DIFs
-
-\item {\bf DS1820SERVER}: it runs on lyoilcrpi02 adn read 2 DS1820 temperature probes. The first one is in the box, the second is on the detector rack. The periodicity of the readout is available and data can be store in the mysql database in the table DS1820MON
-
-\item {\bf BMP183SERVER}: it runs on lyoilcrpi24 that is connected outside the zone near the SY1527 rack. It measure the pressure and the temperature with a BMP183 Bosch device. Once again the periodicty of the readout can be controlled and the data can be stored in the mysql database in the PTMON table
-\end{itemize}
 \end{document}
 
 
