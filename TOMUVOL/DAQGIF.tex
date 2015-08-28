@@ -112,6 +112,135 @@ Then a set of commands allows to control the process:
 
 \end{itemize} 
 \subsection{Slow control database}
+
+\subsubsection{Construction tables}
+The geometry and connection of a given setup is described with the following tables. HVRACK, DIFs,ASUs and CHAMBERs are registered in separated tables, then DETECTORs are assembly of those devices with SETUP reference. Giving a SETUP name leads to a unique list of detectors and positions
+\begin{verbatim}
+mysql> desc SETUP;
++-------+-------------+------+-----+-------------------+-----------------------------+
+| Field | Type        | Null | Key | Default           | Extra                       |
++-------+-------------+------+-----+-------------------+-----------------------------+
+| IDX   | int(11)     | NO   | PRI | NULL              | auto_increment              |
+| NAME  | varchar(50) | YES  |     | NONE              |                             |
+| START | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| VALID | tinyint(1)  | YES  |     | 1                 |                             |
++-------+-------------+------+-----+-------------------+-----------------------------+
+mysql> desc HVRACK;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| IDX      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| HVTYPE   | int(11)     | YES  |     | 0       |                |
+| HOSTNAME | varchar(50) | YES  |     | NONE    |                |
+| USERNAME | varchar(50) | YES  |     | NONE    |                |
+| PWD      | varchar(50) | YES  |     | NONE    |                |
+| VALID    | tinyint(1)  | YES  |     | 1       |                |
++----------+-------------+------+-----+---------+----------------+
+mysql> desc DIF;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| IDX      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| NUMBER   | int(11)     | YES  |     | 0       |                |
+| FIRMWARE | varchar(50) | YES  |     | NONE    |                |
+| VALID    | tinyint(1)  | YES  |     | 1       |                |
++----------+-------------+------+-----+---------+----------------+
+mysql> desc ASU;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| IDX    | int(11)     | NO   | PRI | NULL    | auto_increment |
+| NAME   | varchar(50) | YES  |     | NONE    |                |
+| TYPE   | int(11)     | YES  |     | 0       |                |
+| NASICS | int(11)     | YES  |     | 0       |                |
+| VALID  | tinyint(1)  | YES  |     | 1       |                |
++--------+-------------+------+-----+---------+----------------+
+mysql> desc CHAMBER;
++-------+-------------+------+-----+-------------------+-----------------------------+
+| Field | Type        | Null | Key | Default           | Extra                       |
++-------+-------------+------+-----+-------------------+-----------------------------+
+| IDX   | int(11)     | NO   | PRI | NULL              | auto_increment              |
+| NAME  | varchar(50) | YES  |     | NONE              |                             |
+| TYPE  | int(11)     | YES  |     | 0                 |                             |
+| X0    | double      | YES  |     | 0                 |                             |
+| X1    | double      | YES  |     | 0                 |                             |
+| Y0    | double      | YES  |     | 0                 |                             |
+| Y1    | double      | YES  |     | 0                 |                             |
+| START | timestamp   | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| VALID | tinyint(1)  | YES  |     | 1                 |                             |
++-------+-------------+------+-----+-------------------+-----------------------------+
+
+mysql> desc DETECTOR;
++-----------+------------+------+-----+-------------------+-----------------------------+
+| Field     | Type       | Null | Key | Default           | Extra                       |
++-----------+------------+------+-----+-------------------+-----------------------------+
+| IDX       | int(11)    | NO   | PRI | NULL              | auto_increment              |
+| CHAMBERID | int(11)    | YES  |     | 0                 |                             |
+| SETUPID   | int(11)    | YES  |     | 0                 |                             |
+| HVRACKID  | int(11)    | YES  |     | 0                 |                             |
+| HVCHANNEL | int(11)    | YES  |     | 0                 |                             |
+| DIFID0    | int(11)    | YES  |     | 0                 |                             |
+| DIFID1    | int(11)    | YES  |     | 0                 |                             |
+| DIFID2    | int(11)    | YES  |     | 0                 |                             |
+| ASUID00   | int(11)    | YES  |     | 0                 |                             |
+| ASUID10   | int(11)    | YES  |     | 0                 |                             |
+| ASUID20   | int(11)    | YES  |     | 0                 |                             |
+| ASUID01   | int(11)    | YES  |     | 0                 |                             |
+| ASUID11   | int(11)    | YES  |     | 0                 |                             |
+| ASUID21   | int(11)    | YES  |     | 0                 |                             |
+| PREF      | double     | YES  |     | 0                 |                             |
+| TREF      | double     | YES  |     | 0                 |                             |
+| VREF      | double     | YES  |     | 0                 |                             |
+| Z0        | double     | YES  |     | 0                 |                             |
+| Z1        | double     | YES  |     | 0                 |                             |
+| HEURE     | timestamp  | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| VALID     | tinyint(1) | YES  |     | 1                 |                             |
++-----------+------------+------+-----+-------------------+-----------------------------+
+
+\end{verbatim}
+
+One has to notice in the DETECTOR table, 3 files PREF,TREF,VREF where the reference pressure, temperature and voltage are stored. They will  be used in the regulation procedure.
+\subsubsection{Monitoring tables}
+
+Each monitoring devices has its own monitoring table where measurements are stored with a time stamp:
+\begin{verbatim}
+mysql> desc HVMON;
++-----------+------------+------+-----+-------------------+-----------------------------+
+| Field     | Type       | Null | Key | Default           | Extra                       |
++-----------+------------+------+-----+-------------------+-----------------------------+
+| IDX       | int(11)    | NO   | PRI | NULL              | auto_increment              |
+| HVRACKID  | int(11)    | YES  |     | 0                 |                             |
+| HVCHANNEL | int(11)    | YES  |     | 0                 |                             |
+| VSET      | double     | YES  |     | 0                 |                             |
+| VMON      | double     | YES  |     | 0                 |                             |
+| IMON      | double     | YES  |     | 0                 |                             |
+| STATUS    | int(11)    | YES  |     | 0                 |                             |
+| HEURE     | timestamp  | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| VALID     | tinyint(1) | YES  |     | 1                 |                             |
++-----------+------------+------+-----+-------------------+-----------------------------+
+mysql> desc DS1820MON;
++-------+------------+------+-----+-------------------+-----------------------------+
+| Field | Type       | Null | Key | Default           | Extra                       |
++-------+------------+------+-----+-------------------+-----------------------------+
+| IDX   | int(11)    | NO   | PRI | NULL              | auto_increment              |
+| TIN   | double     | YES  |     | 0                 |                             |
+| TOUT  | double     | YES  |     | 0                 |                             |
+| HEURE | timestamp  | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| VALID | tinyint(1) | YES  |     | 1                 |                             |
++-------+------------+------+-----+-------------------+-----------------------------+
+mysql> desc PTMON;
++-------------+------------+------+-----+-------------------+-----------------------------+
+| Field       | Type       | Null | Key | Default           | Extra                       |
++-------------+------------+------+-----+-------------------+-----------------------------+
+| IDX         | int(11)    | NO   | PRI | NULL              | auto_increment              |
+| PRESSURE    | double     | YES  |     | 0                 |                             |
+| TEMPERATURE | double     | YES  |     | 0                 |                             |
+| HEURE       | timestamp  | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+| VALID       | tinyint(1) | YES  |     | 1                 |                             |
++-------------+------------+------+-----+-------------------+-----------------------------+
+
+\end{verbatim} 
+
 \subsection{Control and Measure}
 Each of the process described in the slow\_conf.json configuration file is controlling a different hardware:
 \begin{itemize}
@@ -128,30 +257,31 @@ Once again a python package LMainSlowControl is available to control all those p
 \begin{itemize}
 \item \textcolor{red}{ \bf  import LMainSlowControl} :  imports the python package
 \item \textcolor{red}{d=LMainSlowControl.DimSlowControl("lyosdhcal11.cern.ch")}: it creates the interface with the DNS lyosdhcal11.cern.ch
-\item \textcolor{red}{d.scandns() } it scans the DNS and discover services 
-\item \textcolor{red}{d.CAENHVRead(48)}
-\item \textcolor{red}{d.getCurrentHVChannel()}
-\item \textcolor{red}{d.getCurrentHVVoltageRead()}
-\item \textcolor{red}{d.getCurrentHVCurrentRead()}
-\item \textcolor{red}{d.getCurrentHVVoltageSet()}
-\item \textcolor{red}{d.CAENHVSetOn(49)}
-\item \textcolor{red}{d.CAENHVSetOff(49)}
-\item \textcolor{red}{d.CAENHVSetVoltage(48,3300)}
-\item \textcolor{red}{d.CAENHVSetCurrent(48,50)}
-\item \textcolor{red}{d.CAENHVStartRegulation(60)}
-\item \textcolor{red}{d.CAENHVStartMonitor(120)}
-\item \textcolor{red}{d.CAENHVStopRegulation()}
-\item \textcolor{red}{d.CAENHVStopMonitor()}
-\item \textcolor{red}{d.BMP183SetPeriod(30)}
-\item \textcolor{red}{d.BMP183Store("acqilc/RPC\_2008@lyoac30.cern.ch:GIFPP2015")}
-\item \textcolor{red}{d.DS1820SetPeriod(30)}
-\item \textcolor{red}{d.DS1820Store("acqilc/RPC\_2008@lyoac30.cern.ch:GIFPP2015")}
-\item \textcolor{red}{d.OpenGPIO()}
-\item \textcolor{red}{d.VMEOn()}
-\item \textcolor{red}{d.VMEOff()}
-\item \textcolor{red}{d.DIFOn()}
-\item \textcolor{red}{d.DIFOff()}
-\item \textcolor{red}{d.CloseGPIO()}
+\item \textcolor{red}{d.scandns() }: it scans the DNS and discover services 
+\item \textcolor{red}{d.CAENHVInitialise("test") }: it uses the SLOWDB variable of the CAENSERVER program to access the database and query it for the given SETUP.
+\item \textcolor{red}{d.CAENHVRead(48)}: it reads channel 48
+\item \textcolor{red}{d.getCurrentHVChannel()}: it returns last channel read 
+\item \textcolor{blue}{d.getCurrentHVVoltageRead()}: it returns last VMON read
+\item \textcolor{blue}{d.getCurrentHVCurrentRead()}: it returns last IMON read
+\item \textcolor{blue}{d.getCurrentHVVoltageSet()}: it returns last VSET read
+\item \textcolor{blue}{d.CAENHVSetOn(49)} : turns HV on channel 49
+\item \textcolor{blue}{d.CAENHVSetOff(49)}: tuns HV Off on channel 49
+\item \textcolor{blue}{d.CAENHVSetVoltage(48,3300)}: it sets VSET to 3300 V on channel 48
+\item \textcolor{blue}{d.CAENHVSetCurrent(48,50)}: it sets I0 to 50 microA on channel 48
+\item \textcolor{blue}{d.CAENHVStartRegulation(60)}: it starts the regulation with a period of 60 s. It queries the database for each detector of the setup, looks for current Voltage, makes a mean of the last measure pressure measured by the BMP183 (PMEAN)  and last TOUT temperature measured by the DS1820 probe (TMEAN). It compares the effective voltage to the VREF recalculated from (PREF,TREF) to (PMEAN,TMEAN) and correct the voltage VSET if the differenc is bigger than 20 V and bellow 200 V
+\item \textcolor{blue}{d.CAENHVStartMonitor(120)}: it reads all detector channel sepcified in the SETUP and store the in HVMON every 120 s
+\item \textcolor{blue}{d.CAENHVStopRegulation()}: it stops the Regulation thread
+\item \textcolor{blue}{d.CAENHVStopMonitor()}: it stops the monitroing thread
+\item \textcolor{blue}{d.BMP183SetPeriod(30)}: it set the period of the BMP183 reading
+\item \textcolor{blue}{d.BMP183Store("acqilc/RPC\_2008@lyoac30.cern.ch:GIFPP2015")}: it stores BMP183 data in PTMON table on the given account
+\item \textcolor{blue}{d.DS1820SetPeriod(30)}: it sets the period of the DS1820 reading
+\item \textcolor{blue}{d.DS1820Store("acqilc/RPC\_2008@lyoac30.cern.ch:GIFPP2015")}: it stores the DS1820 data in the DS1820MON table on the given account.
+\item \textcolor{red}{d.OpenGPIO()}: it opens the GPIO access
+\item \textcolor{blue}{d.VMEOn()}: turns VME LV On
+\item \textcolor{blue}{d.VMEOff()}: turns VME LV Off
+\item \textcolor{blue}{d.DIFOn()}: turns DIF LV On
+\item \textcolor{blue}{d.DIFOff()} turns DIF LV Off
+\item \textcolor{red}{d.CloseGPIO()}: closes the GPIO access
 
 \end{itemize}
 \section{DAQ Architecture}
@@ -271,7 +401,7 @@ and it can be stoped with
 
 \subsection {Data writing}
 
-The data writing is achieved by one DIM daemon server running on the central PC ({\bf \sl clrtodaq0-prive}.It is started with
+The data writing is achieved by one DIM daemon server running on the central PC ({\bf \sl lyosdhcal11}.It is started with
 
 {\sl \bf sudo /etc/init.d/dimwriterd start }
 
@@ -315,7 +445,7 @@ Inside the python shell launched you can do the following:
 \begin{enumerate} 
 \item \textcolor{red}{ \bf  import LSDHCALDimCtrl} :  imports the python package
 
-\item \textcolor{red}{\it \bf s=LSDHCALDimCtrl.DimDaqControl("Tomuvol")}:  creates an instance of DimDaqControl
+\item \textcolor{red}{\it \bf s=LSDHCALDimCtrl.DimDaqControl("gifpp")}:  creates an instance of DimDaqControl
 
 \item \textcolor{red}{\it \bf s.scandns()}: lists all DIMServer, services and commands available on the DIM DNS  
 \item \textcolor{red}{\it \bf s.initialiseWriter("/data/online/Results")}: Initialise the data writing on the given directory. It has to be done only once if the dimwriter daemon is not stopped.
@@ -344,7 +474,7 @@ Inside the python shell launched you can do the following:
 The red commands needs to be used only once per session. The blue ones should be used once or if any changes has occurred on dimdif servers (power cycle for example). The purple ones are used to reconfigure chips. The green ones are the normal one to start and stop a run. Eventually the black commands are optional, the {\bf download} one must be called at least ones to access the DB but is not needed in a new session if the dimdb server is alive and already contains the state 
 
 \subsection{ The StartDaq package }
-The {\bf \sl StartDaq} pacakge embedded the { \bf \sl DimDaqControl }  and add hosts managment, LV and HV control. It can be started directly in python on lyoilcbpi01. It uses a configuration file to handle the host managment and set the DB and trigger parameter. An exemple is found in SDHCAL/config\_m3.py:
+The {\bf \sl StartDaq} pacakge embedded the { \bf \sl DimDaqControl }  and add hosts managment, LV and HV control. It can be started directly in python on lyosdhcal11. It uses a configuration file to handle the host managment and set the DB and trigger parameter. An exemple is found in SDHCAL/python/config\_box.py:
 
 \begin{verbatim}
 
@@ -384,7 +514,7 @@ Inside the python shell launched you can do the following:
 
 \item {\bf s.download("LPCC\_230")}: triggers the DELETE of the previous state in the DB server and the DOWNLOAD of the specified state. Since no semaphore mechanism is used in this command a 20 s delay may be needed before the data are available. It has to be called only when a new DB state needs to be downloaded or when the dimdb daemon is restarted
 
-\item \textcolor{purple}{\bf s.registerstate(0x815A1B00,"LPCC\_230")}: send a REGISTERSTATE command to all dimdif server. The state specified should be identical to the last downloaded state in dimdb. It must be called before configure to also set the control register.
+\item \textcolor{purple}{\bf s.registerstate(0x815A1B00,"GIFSPS\_57")}: send a REGISTERSTATE command to all dimdif server. The state specified should be identical to the last downloaded state in dimdb. It must be called before configure to also set the control register.
 
 \item \textcolor{purple}{\bf s.configure()}: sends a CONFIGURE command to all dimdif servers
 
@@ -443,6 +573,98 @@ This graphical interface is just a user friendly interface to the StartDaq packa
 \label{SDaqImpl3}
 \end{figure}
 
+\section{How to }
+
+\subsection{Lost connection to lyoilcrpi02}
+
+If the connection is lost to lyoilcrpi02, first check with a ping that the TCP/IP is  not answering at all:
+\begin{verbatim}
+ping lyoilcrpi02
+\end{verbatim}
+
+If no communication is possible go in a browser to http://lyoilcpwr01  (admin/admin) and power cycle the box. Five minutes later you should be able to connect to lyoilcrpi02
+ \begin{verbatim}
+ssh pi@lyoilcrpi02
+\end{verbatim}
+
+then restart the job control on it
+\begin{verbatim}
+sudo /etc/init.d/dimjcd start
+\end{verbatim}
+
+
+Now in the home of  lyosdhcal11 in python
+\begin{verbatim}
+import Ldimjc
+dsc=Ldimjc.DimJobInterface()
+dsc.loadJSON("slow_conf.json")
+dsc.clearHostJobs("llyoilcrpi02")
+dsc.startJobs("lyoilcrpi02")
+dsc.status()
+dsc.List()
+# you should see the list of process
+import LMainSlowControl
+l=LMainSlowControl.DimSlowControl("lyosdhcal11")
+l.scandns()
+l.DS1820SetPeriod(30)
+l.DS1820Store("acqilc/RPC_2008@lyosdhcal11:GIFPP2015")
+l.OpenGPIO()
+l.VMEOn()
+l.DIFOn()
+# wait 1 minute
+l.VMEOff()
+l.VMEOn()
+
+\end{verbatim}
+
+Keep this window open.
+
+Now you can restart the DAQ graphical interface:
+\begin{enumerate}
+\item Create DAQ
+\item Restart Hosts
+\item Scan DNS
+\item Download DB (wait 1 min)
+\item Init Writing
+\item LV On
+\item Initialise
+\end{enumerate}
+
+After Initialise, log on lyoilcrpi02 and check /var/log/dimccc.log if the last return code is -1 that means that the USB communication to the SDCC failed and the program exited. Go in the slow control window and repeat the VME Off/On step ,then repeat the sequence
+
+\begin{enumerate}
+\item Destroy
+\item Restart Hosts
+\item Scan DNS
+\item Download DB (wait 1 min)
+\item Init Writing
+\item LV On
+\item Initialise
+\end{enumerate}
+
+The /var/log/dimccc.log should have return code 0 and you can now do your run.
+
+\subsection{One DIF is in INIT\_FAILED}
+
+That means that the USB communication cannot be established. It might be due to a connection problem (LV or HDMI) but also a SDCC issue (check again /var/log/dimccc.log)
+
+\subsection{ One DIF cannot configured}
+
+Check:
+\begin{itemize}
+\item HDMI connection
+\item LV voltage on the DIF (it must be greater than 5 V)
+\item DIF-ASU connector (LV Off, replug it)
+\end{itemize}
+
+If none of this fix works, it means one ASIC is faulty. There is few alternatives
+\begin{enumerate}
+\item Try to run: You're not sure all chips are configured and it may block the trigger
+\item Keep the chamber in the setup but disable it. Unplug the LV of the DIF
+\item Dismount and debug the chamber
+\end{enumerate}
+
+ 
 \end{document}
 
 
