@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-09-29T17:59:40+02:00
+
+====== Tuesday 29 Sep 2015 ======
+
+==== Reprise de l'analyse des donnees d'Avril 2015 ====
+
+On utilise les runs de pions pour les deux versions de la base de donnees
+* 158: Masque des pads bruyants par la methode dichotomique (Laurent)
+* 163: Masque des pads bruyants par la methode Fermi-Dirac ( Arnaud)
+
+
