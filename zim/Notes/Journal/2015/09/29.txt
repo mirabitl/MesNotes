@@ -11,3 +11,6 @@ On utilise les runs de pions pour les deux versions de la base de donnees
 * 163: Masque des pads bruyants par la methode Fermi-Dirac ( Arnaud)
 
 
+
+
+
