@@ -1,0 +1,1669 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE office:document-content PUBLIC "-//OpenOffice.org//DTD OfficeDocument 2.0//EN" "office.dtd"> 
+ 
+<?xtpipes file="oo-text.4xt" ?> 
+<office:document-content  
+xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"  
+xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0"  
+xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0"  
+xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"  
+xmlns:fo="http://www.w3.org/1999/XSL/Format"  
+xmlns:xlink="http://www.w3.org/1999/xlink"  
+xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"  
+xmlns:dc="http://purl.org/dc/elements/1.1/"  
+xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0"  
+xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" 
+xmlns:svg="http://www.w3.org/2000/svg"  
+xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0"  
+xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0"  
+xmlns:math="http://www.w3.org/1998/Math/MathML"  
+xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0"  
+xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0"  
+xmlns:ooo="http://openoffice.org/2004/office"  
+xmlns:ooow="http://openoffice.org/2004/writer"  
+xmlns:oooc="http://openoffice.org/2004/calc"  
+xmlns:dom="http://www.w3.org/2001/xml-events"  
+xmlns:xforms="http://www.w3.org/2002/xforms"  
+xmlns:xsd="http://www.w3.org/2001/XMLSchema"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+xmlns:anim="urn:oasis:names:tc:opendocument:xmlns:animation:1.0"  
+xmlns:smil="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" 
+xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" 
+office:version="1.0" > 
+<office:automatic-styles> <?tex4ht-lg file="DAQGIF.lg" ?> <style:style style:name="Figure" style:family="section"> 
+<style:section-properties fo:margin-left="0.25in" fo:margin-right="0.25in" style:editable="true"> 
+<style:columns fo:column-count="0" fo:column-gap="0in"/> </style:section-properties> </style:style> 
+<style:page-layout style:name="Standard-page-layout"> 
+<style:page-layout-properties fo:page-width="614.295pt" fo:page-height="794.96999pt" style:num-format="1" style:print-orientation="portrait" fo:margin-top="0.7874in" fo:margin-bottom="0.7874in" fo:margin-left="0.7874in" fo:margin-right="0.7874in" style:writing-mode="lr-tb" style:footnote-max-height="0in"> 
+<style:footnote-sep style:width="0.0071in" style:distance-before-sep="0.0398in" style:distance-after-sep="0.0398in" style:adjustment="left" style:rel-width="25%" style:color="#000000"/> 
+</style:page-layout-properties> 
+<style:header-style/> <style:footer-style/> </style:page-layout> 
+ 
+</office:automatic-styles>     <office:body><office:text>
+<!--begin maketitle-->
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+<text:p text:style-name="Title" ><text:span text:style-name="textbf" ><text:span 
+text:style-name="ecbx-1728">GIF++ DAQ based on DIM</text:span></text:span></text:p>
+<text:p text:style-name="author" ><text:span 
+text:style-name="ecrm-1200">L.Mirabito</text:span></text:p>
+<text:p text:style-name="date" ></text:p>
+   <!--end maketitle-->
+   <!--start of section--><text:h text:style-name="Heading-2" text:outline-level="2" ><text:span text:style-name="section" >1    </text:span><t4htlink 
+href="#x1-10001" name="x1-10001"></t4htlink>Slow Control</text:h> 
+
+<!--l. 15--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >1.1    </text:span><t4htlink 
+href="#x1-20001.1" name="x1-20001.1"></t4htlink>Processes configuration</text:h> 
+
+<!--l. 16--><text:p text:style-name="Text-body">The processes are driven via a unique daemon running on each connected PC
+called the job control. It&#x2019;s a dim server that has to be started once on each
+considered computer. If one computer crash it&#x2019;s the only needed process to
+restart.
+   </text:p> 
+<!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >1.1.1    </text:span><t4htlink 
+href="#x1-30001.1.1" name="x1-30001.1.1"></t4htlink>DimJobControl</text:h> 
+
+<!--l. 19--><text:p text:style-name="Text-body">On each slow control computer the process is started by
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 20--><text:p text:style-name="Preformatted-Text">
+sudo<text:s/>/etc/init.d/dimjcd<text:s/>start
+</text:p>
+<!--l. 23--><text:p text:style-name="First-line-indent">   The usual stop and status options are available.
+</text:p> 
+<!--l. 25--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsubsection--><!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >1.1.2    </text:span><t4htlink 
+href="#x1-40001.1.2" name="x1-40001.1.2"></t4htlink>Controlling slow control process</text:h> 
+
+<!--l. 27--><text:p text:style-name="Text-body">A DimJobInterface program allows to start and stop process on all connected
+computer via the DimJobControl daemon. It is based ona JSON description of the
+needed process.
+</text:p> 
+<!--l. 29--><text:p text:style-name="First-line-indent">   Here is the one used at GIF++ in August 2015. The structure is simple and
+self-describing.
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 32--><text:p text:style-name="Preformatted-Text">
+{
+<text:line-break/><text:s/><text:s/><text:s/><text:s/>&#x0022;hosts&#x0022;<text:s/>:
+<text:line-break/><text:s/><text:s/><text:s/><text:s/>{
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;lyosdhcal11&#x0022;:[
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>{
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Name&#x0022;:&#x0022;CAENSERVER&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Arguments&#x0022;<text:s/>:<text:s/>[&#x0022;-f<text:s/>/data/NAS/toto.slcio&#x0022;,&#x0022;-c<text:s/>MONCOLLECTOR&#x0022;],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Environnement&#x0022;<text:s/>:<text:s/>[
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;DIM_DNS_NODE=lyosdhcal11&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;SLOWDB=acqilc/RPC_2008@lyosdhcal11:GIFPP2015;GIFLYON2&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Program&#x0022;<text:s/>:<text:s/>&#x0022;/opt/dhcal/bin/dimcaenhv&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>}
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;lyoilcrpi24&#x0022;:[
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>{
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Name&#x0022;:&#x0022;BMP183SERVER&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Arguments&#x0022;<text:s/>:<text:s/>[&#x0022;-f<text:s/>/data/NAS/toto.slcio&#x0022;,&#x0022;-c<text:s/>MONCOLLECTOR&#x0022;],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Environnement&#x0022;<text:s/>:<text:s/>[
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;DIM_DNS_NODE=lyosdhcal11&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Program&#x0022;<text:s/>:<text:s/>&#x0022;/opt/dhcal/bin/dimbmp183&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>}
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>],
+<text:line-break/>//<text:s/>Test<text:s/>avec<text:s/>2<text:s/>programmes
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;lyoilcrpi02&#x0022;:[
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>//<text:s/>GPIO
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>{
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Name&#x0022;:&#x0022;GPIOSERVER&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Arguments&#x0022;<text:s/>:<text:s/>[],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Environnement&#x0022;<text:s/>:<text:s/>[
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;DIM_DNS_NODE=lyosdhcal11&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Program&#x0022;<text:s/>:<text:s/>&#x0022;/opt/dhcal/bin/dimgpio&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>},
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>//<text:s/>DS1820
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>{
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Name&#x0022;:&#x0022;DS1820SERVER&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Arguments&#x0022;<text:s/>:<text:s/>[],
+                                                                  
+
+                                                                  
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Environnement&#x0022;<text:s/>:<text:s/>[
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;DIM_DNS_NODE=lyosdhcal11&#x0022;,
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;LD_LIBRARY_PATH=/usr/lib:/usr/local/lib:/opt/dhcal/lib:/opt/dhcal/DQM4HEP/lib:/opt/dhcal/dim/linux:$LD_LIBRARY_PATH&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>],
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>&#x0022;Program&#x0022;<text:s/>:<text:s/>&#x0022;/opt/dhcal/bin/dimds1820&#x0022;
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>}
+<text:line-break/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>]
+<text:line-break/><text:s/><text:s/><text:s/><text:s/>}
+<text:line-break/>}
+<text:line-break/>
+</text:p>
+<!--l. 87--><text:p text:style-name="First-line-indent">   The DimJobInterface belongs to the python package Ldimjc. It has few methods
+to start, stop and list processes belonging to the description file.
+   </text:p> 
+<!--end of subsubsection--><!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >1.1.3    </text:span><t4htlink 
+href="#x1-50001.1.3" name="x1-50001.1.3"></t4htlink>Usage</text:h> 
+
+<!--l. 89--><text:p text:style-name="Text-body">On lyosdhcal11 with DIM_DNS_NODE correctly defined the DimJobInterface is
+instantiated in python with
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 90--><text:p text:style-name="Preformatted-Text">
+&#x003E;&#x003E;&#x003E;import<text:s/>Ldimjc
+<text:line-break/>&#x003E;&#x003E;&#x003E;<text:s/>dsc=Ldimjc.DimJobInterface()
+</text:p>
+<!--l. 95--><text:p text:style-name="First-line-indent">   Then a set of commands allows to control the process:
+     </text:p> 
+<!--l. 97--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor1"><text:span 
+text:style-name="ecbx-1000">import Ldimjc</text:span></text:span> : imports the python package
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor2"><text:span 
+text:style-name="ecbx-1000">dsc=Ldimjc.DimJobInterface()</text:span></text:span>: It creates the interface
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor3"><text:span 
+text:style-name="ecbx-1000">dsc.loadJSON(&#x0022;slow_conf.json&#x0022;)</text:span></text:span>: It loads and parses the given files,
+     scan the DNS to have the list of DimJobControl daemon
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor4"><text:span 
+text:style-name="ecbx-1000">dsc.startJobs(&#x0022;lyoilcrpi02&#x0022;)</text:span></text:span>:  it  starts  the  jobs  described  in  the
+     configuration on the given host. If the host is &#x0022;ALL&#x0022;, theb all the jobs
+     desribed in the file are started.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor5"><text:span 
+text:style-name="ecbx-1000">dsc.clearHostJobs(&#x0022;lyoilcrpi02&#x0022;</text:span></text:span>:  it  kills  all  the  jobs  started  on
+     lyoilcrpi02 or on any host given
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor6"><text:span 
+text:style-name="ecbx-1000">dsc.clearAllJobs()</text:span></text:span>: it kills all jobs on all hosts
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor7"><text:span 
+text:style-name="ecbx-1000">dsc.status()</text:span></text:span>: it queries the status of all the jobs on all hosts.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor8"><text:span 
+text:style-name="ecbx-1000">dsc.List()</text:span></text:span>: it prints the last queried status
+                                                                  
+
+                                                                  
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor9"><text:span 
+text:style-name="ecbx-1000">dsc.killJob(&#x0022;lyoilcrpi02&#x0022;,2934,9)</text:span></text:span>: it kills the job with PID 2934 on
+     host lyoilcrpi02 with signal 9. The host and PID is found with the previous
+     List command
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor10"><text:span 
+text:style-name="ecbx-1000">dsc.restartJob(&#x0022;lyoilcrpi02&#x0022;,&#x0022;DS1820SERVER&#x0022;,2934, 9)</text:span></text:span>: it sends
+     a killJob message to PID 2934 on lyoilcrpi02 with signal 9 and restart the
+     process described on this host as DS1820SERVER in the configuration
+     file.
+     </text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 114--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsubsection--><!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >1.2    </text:span><t4htlink 
+href="#x1-60001.2" name="x1-60001.2"></t4htlink>Slow control database</text:h> 
+
+<!--l. 116--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >1.2.1    </text:span><t4htlink 
+href="#x1-70001.2.1" name="x1-70001.2.1"></t4htlink>Construction tables</text:h> 
+
+<!--l. 117--><text:p text:style-name="Text-body">The geometry and connection of a given setup is described with the following tables.
+HVRACK, DIFs,ASUs and CHAMBERs are registered in separated tables, then
+DETECTORs are assembly of those devices with SETUP reference. Giving a SETUP
+name leads to a unique list of detectors and positions
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 118--><text:p text:style-name="Preformatted-Text">
+mysql&#x003E;<text:s/>desc<text:s/>SETUP;
+<text:line-break/>+-------+-------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>Field<text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-------+-------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>NAME<text:s/><text:s/>|<text:s/>varchar(50)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NONE<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>START<text:s/>|<text:s/>timestamp<text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>CURRENT_TIMESTAMP<text:s/>|<text:s/>on<text:s/>update<text:s/>CURRENT_TIMESTAMP<text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/>|<text:s/>tinyint(1)<text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-------+-------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>mysql&#x003E;<text:s/>desc<text:s/>HVRACK;
+<text:line-break/>+----------+-------------+------+-----+---------+----------------+
+<text:line-break/>|<text:s/>Field<text:s/><text:s/><text:s/><text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+----------+-------------+------+-----+---------+----------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/>|
+<text:line-break/>|<text:s/>HVTYPE<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HOSTNAME<text:s/>|<text:s/>varchar(50)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NONE<text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>USERNAME<text:s/>|<text:s/>varchar(50)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NONE<text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>PWD<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>varchar(50)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NONE<text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/><text:s/><text:s/><text:s/>|<text:s/>tinyint(1)<text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+----------+-------------+------+-----+---------+----------------+
+<text:line-break/>mysql&#x003E;<text:s/>desc<text:s/>DIF;
+<text:line-break/>+----------+-------------+------+-----+---------+----------------+
+<text:line-break/>|<text:s/>Field<text:s/><text:s/><text:s/><text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+----------+-------------+------+-----+---------+----------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/>|
+<text:line-break/>|<text:s/>NUMBER<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>FIRMWARE<text:s/>|<text:s/>varchar(50)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NONE<text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/><text:s/><text:s/><text:s/>|<text:s/>tinyint(1)<text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+----------+-------------+------+-----+---------+----------------+
+<text:line-break/>mysql&#x003E;<text:s/>desc<text:s/>ASU;
+<text:line-break/>+--------+-------------+------+-----+---------+----------------+
+<text:line-break/>|<text:s/>Field<text:s/><text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+--------+-------------+------+-----+---------+----------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/>|
+<text:line-break/>|<text:s/>NAME<text:s/><text:s/><text:s/>|<text:s/>varchar(50)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NONE<text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>TYPE<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>NASICS<text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/><text:s/>|<text:s/>tinyint(1)<text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+--------+-------------+------+-----+---------+----------------+
+<text:line-break/>mysql&#x003E;<text:s/>desc<text:s/>CHAMBER;
+<text:line-break/>+-------+-------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>Field<text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+                                                                  
+
+                                                                  
+<text:line-break/>+-------+-------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>NAME<text:s/><text:s/>|<text:s/>varchar(50)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>NONE<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>TYPE<text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>X0<text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>X1<text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>Y0<text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>Y1<text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>START<text:s/>|<text:s/>timestamp<text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>CURRENT_TIMESTAMP<text:s/>|<text:s/>on<text:s/>update<text:s/>CURRENT_TIMESTAMP<text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/>|<text:s/>tinyint(1)<text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-------+-------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>
+<text:line-break/>mysql&#x003E;<text:s/>desc<text:s/>DETECTOR;
+<text:line-break/>+-----------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>Field<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-----------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>CHAMBERID<text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>SETUPID<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HVRACKID<text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HVCHANNEL<text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>DIFID0<text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>DIFID1<text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>DIFID2<text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>ASUID00<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>ASUID10<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>ASUID20<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>ASUID01<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>ASUID11<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>ASUID21<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>PREF<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>TREF<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>VREF<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>Z0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>Z1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HEURE<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>timestamp<text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>CURRENT_TIMESTAMP<text:s/>|<text:s/>on<text:s/>update<text:s/>CURRENT_TIMESTAMP<text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>tinyint(1)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-----------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>
+</text:p>
+<!--l. 202--><text:p text:style-name="First-line-indent">   One has to notice in the DETECTOR table, 3 files PREF,TREF,VREF where
+the reference pressure, temperature and voltage are stored. They will be used in the
+regulation procedure.
+   </text:p> 
+<!--end of subsubsection--><!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >1.2.2    </text:span><t4htlink 
+href="#x1-80001.2.2" name="x1-80001.2.2"></t4htlink>Monitoring tables</text:h> 
+
+                                                                  
+
+                                                                  
+<!--l. 205--><text:p text:style-name="Text-body">Each monitoring devices has its own monitoring table where measurements are stored
+with a time stamp:
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 206--><text:p text:style-name="Preformatted-Text">
+mysql&#x003E;<text:s/>desc<text:s/>HVMON;
+<text:line-break/>+-----------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>Field<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-----------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HVRACKID<text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HVCHANNEL<text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>VSET<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>VMON<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>IMON<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>STATUS<text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HEURE<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>timestamp<text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>CURRENT_TIMESTAMP<text:s/>|<text:s/>on<text:s/>update<text:s/>CURRENT_TIMESTAMP<text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>tinyint(1)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-----------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>mysql&#x003E;<text:s/>desc<text:s/>DS1820MON;
+<text:line-break/>+-------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>Field<text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>TIN<text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>TOUT<text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HEURE<text:s/>|<text:s/>timestamp<text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>CURRENT_TIMESTAMP<text:s/>|<text:s/>on<text:s/>update<text:s/>CURRENT_TIMESTAMP<text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/>|<text:s/>tinyint(1)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>mysql&#x003E;<text:s/>desc<text:s/>PTMON;
+<text:line-break/>+-------------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>Field<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Type<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Null<text:s/>|<text:s/>Key<text:s/>|<text:s/>Default<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>Extra<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-------------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>|<text:s/>IDX<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>int(11)<text:s/><text:s/><text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/>PRI<text:s/>|<text:s/>NULL<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>auto_increment<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>PRESSURE<text:s/><text:s/><text:s/><text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>TEMPERATURE<text:s/>|<text:s/>double<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>0<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>|<text:s/>HEURE<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>timestamp<text:s/><text:s/>|<text:s/>NO<text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>CURRENT_TIMESTAMP<text:s/>|<text:s/>on<text:s/>update<text:s/>CURRENT_TIMESTAMP<text:s/>|
+<text:line-break/>|<text:s/>VALID<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>tinyint(1)<text:s/>|<text:s/>YES<text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/>1<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|<text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/><text:s/>|
+<text:line-break/>+-------------+------------+------+-----+-------------------+-----------------------------+
+<text:line-break/>
+</text:p>
+<!--l. 244--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsubsection--><!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >1.3    </text:span><t4htlink 
+href="#x1-90001.3" name="x1-90001.3"></t4htlink>Control and Measure</text:h> 
+
+<!--l. 245--><text:p text:style-name="Text-body">Each of the process described in the slow_conf.json configuration file is controlling a
+different hardware:
+                                                                  
+
+                                                                  
+     </text:p> 
+<!--l. 247--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">CAENSERVER  </text:span>:  it  runs  on  lyosdhcal11  and  connects  the  mysql
+     database specified in the SLOWDB variable. The SETUP used in the
+     GIFPP2015 database is GIFLYON2 in this case. On initialise it queries
+     the detector connected, the corresponding HVRACK and connect to the
+     CAEN SY1527 specified there. It uses the SETUP to monitor and/or
+     regulate the detector channels. It provides also single channel access to
+     change manually high voltage and current limit.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">GPIOSERVER</text:span>: it runs on lyoilcrpi02 and controls the switch of the low
+     voltage power supplies of the SDCC VME card and of all the DIFs
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">DS1820SERVER</text:span>: it runs on lyoilcrpi02 adn read 2 DS1820 temperature
+     probes. The first one is in the box, the second is on the detector rack. The
+     periodicity of the readout is available and data can be store in the mysql
+     database in the table DS1820MON
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">BMP183SERVER</text:span>: it runs on lyoilcrpi24 that is connected outside the
+     zone near the SY1527 rack. It measure the pressure and the temperature
+     with a BMP183 Bosch device. Once again the periodicty of the readout
+     can be controlled and the data can be stored in the mysql database in the
+     PTMON table</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 256--><text:p text:style-name="First-line-indent">   Once again a python package LMainSlowControl is available to control all those
+processes:
+     </text:p> 
+<!--l. 258--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor11"><text:span 
+text:style-name="ecbx-1000">import LMainSlowControl</text:span></text:span> : imports the python package
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor12">d=LMainSlowControl.DimSlowControl(&#x0022;lyosdhcal11.cern.ch&#x0022;)</text:span>: it creates
+     the interface with the DNS lyosdhcal11.cern.ch
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor13">d.scandns() </text:span>: it scans the DNS and discover services
+                                                                  
+
+                                                                  
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor14">d.CAENHVInitialise(&#x0022;test&#x0022;)  </text:span>:  it  uses  the  SLOWDB  variable  of  the
+     CAENSERVER program to access the database and query it for the given
+     SETUP.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor15">d.CAENHVRead(48)</text:span>: it reads channel 48
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor16">d.getCurrentHVChannel()</text:span>: it returns last channel read
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor17">d.getCurrentHVVoltageRead()</text:span>: it returns last VMON read
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor18">d.getCurrentHVCurrentRead()</text:span>: it returns last IMON read
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor19">d.getCurrentHVVoltageSet()</text:span>: it returns last VSET read
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor20">d.CAENHVSetOn(49)</text:span> : turns HV on channel 49
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor21">d.CAENHVSetOff(49)</text:span>: tuns HV Off on channel 49
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor22">d.CAENHVSetVoltage(48,3300)</text:span>: it sets VSET to 3300 V on channel 48
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor23">d.CAENHVSetCurrent(48,50)</text:span>: it sets I0 to 50 microA on channel 48
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+                                                                  
+
+                                                                  
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor24">d.CAENHVStartRegulation(60)</text:span>: it starts the regulation with a period of
+     60 s. It queries the database for each detector of the setup, looks for
+     current Voltage, makes a mean of the last measure pressure measured by
+     the BMP183 (PMEAN) and last TOUT temperature measured by the
+     DS1820 probe (TMEAN). It compares the effective voltage to the VREF
+     recalculated from (PREF,TREF) to (PMEAN,TMEAN) and correct the
+     voltage VSET if the differenc is bigger than 20 V and bellow 200 V
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor25">d.CAENHVStartMonitor(120)</text:span>: it reads all detector channel sepcified in
+     the SETUP and store the in HVMON every 120 s
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor26">d.CAENHVStopRegulation()</text:span>: it stops the Regulation thread
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor27">d.CAENHVStopMonitor()</text:span>: it stops the monitroing thread
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor28">d.BMP183SetPeriod(30)</text:span>: it set the period of the BMP183 reading
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor29">d.BMP183Store(&#x0022;acqilc/RPC_2008@lyoac30.cern.ch:GIFPP2015&#x0022;)</text:span>:     it
+     stores BMP183 data in PTMON table on the given account
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor30">d.DS1820SetPeriod(30)</text:span>: it sets the period of the DS1820 reading
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor31">d.DS1820Store(&#x0022;acqilc/RPC_2008@lyoac30.cern.ch:GIFPP2015&#x0022;)</text:span>:      it
+     stores the DS1820 data in the DS1820MON table on the given account.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor32">d.OpenGPIO()</text:span>: it opens the GPIO access
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor33">d.VMEOn()</text:span>: turns VME LV On
+                                                                  
+
+                                                                  
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor34">d.VMEOff()</text:span>: turns VME LV Off
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor35">d.DIFOn()</text:span>: turns DIF LV On
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor36">d.DIFOff()</text:span> turns DIF LV Off
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span text:style-name="textcolor37">d.CloseGPIO()</text:span>: closes the GPIO access
+     </text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 287--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--end of section--><!--start of section--><text:h text:style-name="Heading-2" text:outline-level="2" ><text:span text:style-name="section" >2    </text:span><t4htlink 
+href="#x1-100002" name="x1-100002"></t4htlink>DAQ Architecture</text:h> 
+
+<!--l. 289--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >2.1    </text:span><t4htlink 
+href="#x1-110002.1" name="x1-110002.1"></t4htlink>PC names and role</text:h> 
+
+<!--l. 290--><text:p text:style-name="Text-body">The acquisition is based on 1 RaspberryPI micro computer controlling and reading
+up to 9 DIFs connected on each of the 7 planes: <text:span 
+text:style-name="ecbx-1000">lyoilcrpi02</text:span>. Data are collected and
+written to disk on the linux PC <text:span 
+text:style-name="ecsl-1000">lyosdhcal11</text:span>.
+</text:p> 
+<!--l. 292--><text:p text:style-name="First-line-indent">   The RPI is responsible for chip configurations, DIF control and data readout.
+<text:span 
+text:style-name="ecbx-1000">lyoilcrpi02 </text:span>is also handling the control of the SDCC. The central PC is in charged of
+the configuration database access, the data collection, the event building and writing
+and the human interface instance
+</text:p> 
+<!--l. 294--><text:p text:style-name="First-line-indent">   Since DIM is the network framework used in this data acquisition, the DIM DNS
+must be stated once <text:span 
+text:style-name="ecbx-1000">lyosdhcal11 </text:span>with
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 295--><text:p text:style-name="Preformatted-Text">
+killall<text:s/>-9<text:s/>dns
+<text:line-break/>export<text:s/>DIM_DNS_NODE=lyosdhcal11
+<text:line-break/>/opt/xdaq/bin/dns<text:s/>&#x0026;&#x003E;/dev/null<text:s/>&#x0026;
+</text:p>
+<!--l. 301--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >2.2    </text:span><t4htlink 
+href="#x1-120002.2" name="x1-120002.2"></t4htlink>DIF control</text:h> 
+
+<!--l. 303--><text:p text:style-name="Text-body">On each RPI should run a DIM daemon that controls the DIF connected to it. It is
+started with
+</text:p> 
+<!--l. 305--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimdifd start</text:span>
+</text:p> 
+<!--l. 307--><text:p text:style-name="First-line-indent">   its status is obtained with
+</text:p> 
+<!--l. 309--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimdifd status</text:span>
+</text:p> 
+<!--l. 311--><text:p text:style-name="First-line-indent">   and it can be stoped with
+</text:p> 
+<!--l. 313--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimdifd stop</text:span>
+</text:p> 
+<!--l. 315--><text:p text:style-name="First-line-indent">   The log file is <text:span 
+text:style-name="ecbx-1000">/var/log/dimdif.log</text:span>
+</text:p> 
+<!--l. 317--><text:p text:style-name="First-line-indent">   It is a DIM server acknowledging the following commands:
+     </text:p> 
+<!--l. 319--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" > <text:span 
+text:style-name="ecbx-1000">SCANDEVICES </text:span>: List all DIFs connected on USB and publish a DIM
+     Service DEVICES of 255 integers with the identifiers of the found DIFs
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">INITIALISE</text:span>: requires the DIF identifier, it opens the DIF devices and
+     tries  to  write  and  read  the  test  register.  It  updates  the  Dim  Services
+     STATE and INFO and returns an INITIALISED state in case of success
+     or INIT_FAILED
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">REGISTERSTATE</text:span>:  requires  the  control  register  (integer)  and  the
+     current  Database  state  (string).  It  stores  the  control  register  to  be
+     used  at  the  next  configuration  and  subscribes  to  the  database  DIM
+     server  services  publishing  DIF  parameters  for  each  DIF  separately
+     (/DB/<text:span 
+text:style-name="ecsl-1000">STATE_NAME</text:span>/DIF<text:span 
+text:style-name="ecsl-1000">id</text:span>). By this way it obtains from the dimdb
+     service the configuration parameter of each DIF.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+                                                                  
+
+                                                                  
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">CONFIGURE</text:span>:  it  configures  all  connected  DIF  and  their  asoociated
+     ASICs. It updates the STATE and the INFO of each DIF. The STATE
+     contains the whole decoding of the slow control status.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">START</text:span>: it starts the acquisition of each DIF. The STATE of each DIF
+     is updated to STARTED.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">STOP</text:span>: it stops the acquisition of each DIF. The STATE of each DIF is
+     updated to STOPPED.
+     </text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 332--><text:p text:style-name="First-line-indent">   It also publishes 3 services per DIF:
+     </text:p> 
+<!--l. 334--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">STATE</text:span>:                     a                     string                     containing
+     the  current  DIF  state  (FOUND,  INITIALISED,  PRECONFIGURED,
+     CONFIGURED, STARTED, STOPPED)
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">INFO</text:span>: a structure with <text:span 
+text:style-name="ecsl-1000">dif id, status, slow control status, bcid, gtc, bytes</text:span>
+     <text:span 
+text:style-name="ecsl-1000">read and pc name</text:span>
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">DATA</text:span>: the last DIF data buffer read.</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 342--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >2.3    </text:span><t4htlink 
+href="#x1-130002.3" name="x1-130002.3"></t4htlink>SDCC control</text:h> 
+
+<!--l. 344--><text:p text:style-name="Text-body">A DIM daemon is running on the RPI (<text:span 
+text:style-name="ecsl-1000">clrtorp2-prive</text:span>) where the SDCC is
+connected.It is started with
+</text:p> 
+<!--l. 346--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimcccd start</text:span>
+</text:p> 
+<!--l. 348--><text:p text:style-name="First-line-indent">   its status is obtained with
+</text:p> 
+<!--l. 350--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimcccd status</text:span>
+</text:p> 
+<!--l. 352--><text:p text:style-name="First-line-indent">   and it can be stoped with
+</text:p> 
+<!--l. 354--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimcccd stop</text:span>
+</text:p> 
+<!--l. 356--><text:p text:style-name="First-line-indent">   The log file is <text:span 
+text:style-name="ecbx-1000">/var/log/dimccc.log</text:span>
+</text:p> 
+<!--l. 358--><text:p text:style-name="First-line-indent">   It acknowlegdes the following commands:
+                                                                  
+
+                                                                  
+     </text:p> 
+<!--l. 360--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">INITIALISE</text:span>:  requires  the  CCC  FTDI  identifier  (&#x0022;DCCCCC01&#x0022;),  it
+     opens the SDCC devices and tries to write and read the test register.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">CONFIGURE</text:span>: it sends DIFRESET and CCCRESET before the start
+     of the acquisition
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">DIFRESET</text:span>: it sends a DIFRESET command on the DCC bus
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">CCCRESET</text:span>: it send a CCCRESET command on the DCC bus
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">PAUSE</text:span>: it send a PAUSE command on the DCC bus
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">RESUME</text:span>: it send a RESUME command on the DCC bus
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">START</text:span>: it send a START_ACQUISITION command on the DCC bus
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">STOP</text:span>: it send a STOP_ACQUISITION command on the DCC bus
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" >  <text:span 
+text:style-name="ecbx-1000">TESTREGISTERREAD  </text:span>:  read  the  test  register  and  update  the
+     REGISTER DIM service
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" > <text:span 
+text:style-name="ecbx-1000">TESTREGISTERWRITE </text:span>: requires an integer value that is written
+     in the test register</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 372--><text:p text:style-name="First-line-indent">   It publishes 2 DIM services,<text:span 
+text:style-name="ecbx-1000">REGISTER </text:span>that is filled when TESTREGISTERREAD
+is called and an integer <text:span 
+text:style-name="ecbx-1000">STATUS </text:span>which value is changed depending on the last
+command received.
+                                                                  
+
+                                                                  
+</text:p> 
+<!--l. 374--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >2.3.1    </text:span><t4htlink 
+href="#x1-140002.3.1" name="x1-140002.3.1"></t4htlink>Possible issue</text:h> 
+
+<!--l. 376--><text:p text:style-name="Text-body">At power on, the USB control may be faulty. It is recommended to INITIALISE and
+use the TESTREGISTERWRITE/READ to check the correct access of the
+FPGA.
+</text:p> 
+<!--l. 378--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsubsection--><!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >2.4    </text:span><t4htlink 
+href="#x1-150002.4" name="x1-150002.4"></t4htlink>Database control</text:h> 
+
+<!--l. 380--><text:p text:style-name="Text-body">The database control is the responsability of one DIM daemon server running on the
+central PC (<text:span 
+text:style-name="ecsl-1000">clrtodaq0-prive</text:span>.It is started with
+</text:p> 
+<!--l. 382--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimdbd start</text:span>
+</text:p> 
+<!--l. 384--><text:p text:style-name="First-line-indent">   its status is obtained with
+</text:p> 
+<!--l. 386--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimdbd status</text:span>
+</text:p> 
+<!--l. 388--><text:p text:style-name="First-line-indent">   and it can be stoped with
+</text:p> 
+<!--l. 390--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimdbd stop</text:span>
+</text:p> 
+<!--l. 392--><text:p text:style-name="First-line-indent">   The log file is <text:span 
+text:style-name="ecbx-1000">/var/log/dimdb.log</text:span>
+</text:p> 
+<!--l. 394--><text:p text:style-name="First-line-indent">   It acknowlegdes the following commands:
+     </text:p> 
+<!--l. 396--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">DOWNLOAD</text:span>:         requires         the         name         of         the
+     needed DB state (&#x0022;LPCC_230&#x0022;), it downloads the given state from the
+     configuration databas and creates for each DIF a DIM service withe name
+     /DB/<text:span 
+text:style-name="ecsl-1000">STATE_NAME</text:span>/DIF<text:span 
+text:style-name="ecsl-1000">id </text:span>containing the configuration parameters for
+     all the ASICs of the given DIF
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">DELETE</text:span>: it deletes all the DIM services of the current state
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">NEWRUN</text:span>:  it  asks  the  database  for  a  new  run  number  and  update
+     /DB/RUNFROMDB service
+     </text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 402--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >2.5    </text:span><t4htlink 
+href="#x1-160002.5" name="x1-160002.5"></t4htlink>Data writing</text:h> 
+
+<!--l. 404--><text:p text:style-name="Text-body">The data writing is achieved by one DIM daemon server running on the central PC
+(<text:span 
+text:style-name="ecsl-1000">lyosdhcal11</text:span>.It is started with
+</text:p> 
+<!--l. 406--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimwriterd start</text:span>
+</text:p> 
+<!--l. 408--><text:p text:style-name="First-line-indent">   its status is obtained with
+                                                                  
+
+                                                                  
+</text:p> 
+<!--l. 410--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimwriterd status</text:span>
+</text:p> 
+<!--l. 412--><text:p text:style-name="First-line-indent">   and it can be stoped with
+</text:p> 
+<!--l. 414--><text:p text:style-name="First-line-indent">   <text:span 
+text:style-name="ecbx-1000">sudo /etc/init.d/dimwriterd stop</text:span>
+</text:p> 
+<!--l. 416--><text:p text:style-name="First-line-indent">   The log file is <text:span 
+text:style-name="ecbx-1000">/var/log/dimwriter.log</text:span>
+</text:p> 
+<!--l. 418--><text:p text:style-name="First-line-indent">   It acknowlegdes the following commands:
+     </text:p> 
+<!--l. 420--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">INITIALISE</text:span>: it subscribes to all possible DIF DATA and INFO services
+     connected  to  the  DIM  DNS.  It  also  subscribes  to  the  RUNFROMDB
+     service from the dimdb server. It creates an <text:span 
+text:style-name="ecsl-1000">ShmProxy </text:span>instance that is
+     spying the <text:span 
+text:style-name="ecsl-1000">/dev/shm </text:span>directory for new data collected. The <text:span 
+text:style-name="ecsl-1000">infoHandler</text:span>
+     method of the server received data from the <text:span 
+text:style-name="ecsl-1000">dimdif </text:span>daemon DATA services
+     and write them in <text:span 
+text:style-name="ecsl-1000">/dev/shm</text:span>
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">START</text:span>: it opens an LCIO file in <text:span 
+text:style-name="ecsl-1000">/data/online/Results </text:span>using the current
+     value  of  run  obtained  by  the  RUNFROMDB  service.  It  starts  the
+     <text:span 
+text:style-name="ecsl-1000">/dev/shm </text:span>spying, collects data and writes them to disk when all publishing
+     DIF have completed the same BCID buffer.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" ><text:span 
+text:style-name="ecbx-1000">STOP</text:span>: it stops the spying and closes the data file.</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 425--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >2.5.1    </text:span><t4htlink 
+href="#x1-170002.5.1" name="x1-170002.5.1"></t4htlink>Possible issue</text:h> 
+
+<!--l. 427--><text:p text:style-name="Text-body">This server is still partially in development. It has to be started after the other
+daemons in order to be able to collect run number and DIF data. In case of failure,
+please exit cleanly the daq control (see next section), restart this daemon and restart
+the daq control
+</text:p> 
+<!--l. 430--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsubsection--><!--end of subsection--><!--end of section--><!--start of section--><text:h text:style-name="Heading-2" text:outline-level="2" ><text:span text:style-name="section" >3    </text:span><t4htlink 
+href="#x1-180003" name="x1-180003"></t4htlink>DAQ control</text:h> 
+
+<!--l. 432--><text:p text:style-name="Text-body">The DAQ control is done on the main console loggin on lyosdhcal11 . There is a
+graphical interface and it will be desribe later on but the underlying control is done
+by the DimDaqControl package.
+                                                                  
+
+                                                                  
+</text:p> 
+<!--l. 434--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >3.1    </text:span><t4htlink 
+href="#x1-190003.1" name="x1-190003.1"></t4htlink> The DimDaqControl package </text:h> 
+
+<!--l. 435--><text:p text:style-name="Text-body">The control of the DAQ is done via  <text:span 
+text:style-name="ecsl-1000">DimDaqControl  </text:span>a standalone DIM
+program interfaced to python. The python package LSDHCALDimCtrl is in
+<text:span 
+text:style-name="ecsl-1000">/data/online/SDHCAL/DimCtrl</text:span>. The environment needs to be set properly
+with:
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 437--><text:p text:style-name="Preformatted-Text">
+cd<text:s/>/data/online/SDHCAL/DimCtrl
+<text:line-break/>export<text:s/>LD_LIBRARY_PATH=.:./lib:$LD_LIBRARY_PATH
+<text:line-break/>python
+</text:p>
+<!--l. 443--><text:p text:style-name="First-line-indent">   Inside the python shell launched you can do the following:
+</text:p> 
+<!--l. 445--><text:p text:style-name="First-line-indent">
+     </text:p> 
+<text:list text:style-name="Enumerate" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor38"><text:span 
+text:style-name="ecbx-1000">import LSDHCALDimCtrl</text:span></text:span> : imports the python package
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor39"><text:span 
+text:style-name="ecbx-1000">s=LSDHCALDimCtrl.DimDaqControl(&#x0022;gifpp&#x0022;)</text:span></text:span>:     creates     an
+     instance of DimDaqControl
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor40"><text:span 
+text:style-name="ecbx-1000">s.scandns()</text:span></text:span>: lists all DIMServer, services and commands available on the
+     DIM DNS
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor41"><text:span 
+text:style-name="ecbx-1000">s.initialiseWriter(&#x0022;/data/online/Results&#x0022;)</text:span></text:span>:                     Initialise
+     the data writing on the given directory. It has to be done only once if the
+     dimwriter daemon is not stopped.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor42"><text:span 
+text:style-name="ecbx-1000">s.scan()</text:span></text:span>: sends a SCANDEVICES command to all dimdif servers and wait
+     for DEVICES service update. It must be called once or after a destroy()
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor43"><text:span 
+text:style-name="ecbx-1000">s.initialise()</text:span></text:span>: sends an INITIALISE command to all DIF found previously
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span 
+text:style-name="ecbx-1000">s._print()</text:span>: prints the status of each DIF on each dimdif server from the
+     INFO service of each given DIF. Like the scan() command it must be
+     called only after a scan() command
+                                                                  
+
+                                                                  
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span 
+text:style-name="ecbx-1000">s.download(&#x0022;LPCC_230&#x0022;)</text:span>: triggers the DELETE of the previous state
+     in the DB server and the DOWNLOAD of the specified state. Since no
+     semaphore mechanism is used in this command a 20 s delay may be needed
+     before the data are available. It has to be called only when a new DB state
+     needs to be downloaded or when the dimdb daemon is restarted
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor44"><text:span 
+text:style-name="ecbx-1000">s.registerstate(0x815A1B00,&#x0022;LPCC_230&#x0022;)</text:span></text:span>:                         send
+     a REGISTERSTATE command to all dimdif server. The state specified
+     should be identical to the last downloaded state in dimdb. It must be
+     called before configure to also set the control register.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor45"><text:span 
+text:style-name="ecbx-1000">s.configure()</text:span></text:span>: sends a CONFIGURE command to all dimdif servers
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor46"><text:span 
+text:style-name="ecbx-1000">s.start()</text:span></text:span>: starts a run, sends a START command to the dimccc, the dimdif
+     and the dimwriter servers
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor47"><text:span 
+text:style-name="ecbx-1000">s.stop()</text:span></text:span>: stops a run,sends a STOP command to the dimccc, the dimdif
+     and the dimwriter servers
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor48"><text:span 
+text:style-name="ecbx-1000">s.destroy()</text:span></text:span>: send a DESTROY command to the dimdif servers. All the
+     DIF handling are cleared locally so the only possible next command is
+     scan()</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 474--><text:p text:style-name="First-line-indent">   The red commands needs to be used only once per session. The blue ones should
+be used once or if any changes has occurred on dimdif servers (power cycle for
+example). The purple ones are used to reconfigure chips. The green ones are the
+normal one to start and stop a run. Eventually the black commands are optional, the
+<text:span 
+text:style-name="ecbx-1000">download </text:span>one must be called at least ones to access the DB but is not
+needed in a new session if the dimdb server is alive and already contains the
+state
+                                                                  
+
+                                                                  
+</text:p> 
+<!--l. 476--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >3.2    </text:span><t4htlink 
+href="#x1-200003.2" name="x1-200003.2"></t4htlink> The StartDaq package </text:h> 
+
+<!--l. 477--><text:p text:style-name="Text-body">The <text:span 
+text:style-name="ecsl-1000">StartDaq </text:span>pacakge embedded the  <text:span 
+text:style-name="ecsl-1000">DimDaqControl  </text:span>and add hosts managment,
+LV and HV control. It can be started directly in python on lyosdhcal11. It uses a
+configuration file to handle the host managment and set the DB and trigger
+parameter. An exemple is found in SDHCAL/python/config_box.py:
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 479--><text:p text:style-name="Preformatted-Text">
+<text:line-break/>host=[&#x2019;lyoilcrpi02&#x2019;]
+<text:line-break/>ccc=&#x2019;lyoilcrpi02&#x2019;
+<text:line-break/>db=&#x2019;lyosdhcal11&#x2019;
+<text:line-break/>writer=&#x2019;lyosdhcal11&#x2019;
+<text:line-break/>register=0x815A1B00
+<text:line-break/>#<text:s/>115<text:s/>+<text:s/>petit<text:s/>seup
+<text:line-break/>state=&#x0022;GIFSPS_57&#x0022;
+<text:line-break/>#<text:s/>Novermber<text:s/>2012<text:s/>state=&#x0022;Dome_42chambres_Reference_v4_115&#x0022;
+<text:line-break/>#<text:s/>November<text:s/>2012<text:s/>+<text:s/>masks<text:s/>state=&#x0022;Dome_42chambres_Reference_v4_144&#x0022;
+<text:line-break/>directory=&#x0022;/data/NAS/GIF2015&#x0022;
+<text:line-break/>
+</text:p>
+<!--l. 495--><text:p text:style-name="First-line-indent">   Inside the python shell launched you can do the following:
+</text:p> 
+<!--l. 497--><text:p text:style-name="First-line-indent">
+     </text:p> 
+<text:list text:style-name="Enumerate" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor49"><text:span 
+text:style-name="ecbx-1000">import StartDaq</text:span></text:span> : imports the python package
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor50"><text:span 
+text:style-name="ecbx-1000">s=StartDaq.StartDaq(&#x0022;config_m3&#x0022;)</text:span></text:span>:    creates    an    instance    of
+     StartDaq withc the config_m3.py files
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor51"><text:span 
+text:style-name="ecbx-1000">s.host_start()</text:span></text:span>:    starts    DIM    daemon    on    all    hosts    list    in
+     config.host,config.ccc,config.db and config.writer names
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor52"><text:span 
+text:style-name="ecbx-1000">s.host_stop()</text:span></text:span>:
+     stops DIM daemon on all hosts list in config.host,config.ccc,config.db and
+     config.writer names
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor53"><text:span 
+text:style-name="ecbx-1000">s.rpi_start()</text:span></text:span>: starts DIM daemon on all hosts list in config.host
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor54"><text:span 
+text:style-name="ecbx-1000">s.rpi_stop()</text:span></text:span>: stops DIM daemon on all hosts list in config.host
+                                                                  
+
+                                                                  
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor55"><text:span 
+text:style-name="ecbx-1000">s.initialiseWriter(&#x0022;/data/online/Results&#x0022;)</text:span></text:span>:                     Initialise
+     the data writing on the given directory. It has to be done only once if the
+     dimwriter daemon is not stopped.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor56"><text:span 
+text:style-name="ecbx-1000">s.scan()</text:span></text:span>: sends a SCANDEVICES command to all dimdif servers and wait
+     for DEVICES service update. It must be called once or after a destroy()
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor57"><text:span 
+text:style-name="ecbx-1000">s.initialise()</text:span></text:span>: sends an INITIALISE command to all DIF found previously
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span 
+text:style-name="ecbx-1000">s._print()</text:span>: prints the status of each DIF on each dimdif server from the
+     INFO service of each given DIF. Like the scan() command it must be
+     called only after a scan() command
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span 
+text:style-name="ecbx-1000">s.download(&#x0022;LPCC_230&#x0022;)</text:span>: triggers the DELETE of the previous state
+     in the DB server and the DOWNLOAD of the specified state. Since no
+     semaphore mechanism is used in this command a 20 s delay may be needed
+     before the data are available. It has to be called only when a new DB state
+     needs to be downloaded or when the dimdb daemon is restarted
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor58"><text:span 
+text:style-name="ecbx-1000">s.registerstate(0x815A1B00,&#x0022;GIFSPS_57&#x0022;)</text:span></text:span>:                        send
+     a REGISTERSTATE command to all dimdif server. The state specified
+     should be identical to the last downloaded state in dimdb. It must be
+     called before configure to also set the control register.
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor59"><text:span 
+text:style-name="ecbx-1000">s.configure()</text:span></text:span>: sends a CONFIGURE command to all dimdif servers
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor60"><text:span 
+text:style-name="ecbx-1000">s.start()</text:span></text:span>: starts a run, sends a START command to the dimccc, the dimdif
+     and the dimwriter servers
+                                                                  
+
+                                                                  
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor61"><text:span 
+text:style-name="ecbx-1000">s.stop()</text:span></text:span>: stops a run,sends a STOP command to the dimccc, the dimdif
+     and the dimwriter servers
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" ><text:span text:style-name="textcolor62"><text:span 
+text:style-name="ecbx-1000">s.destroy()</text:span></text:span>: send a DESTROY command to the dimdif servers. All the
+     DIF handling are cleared locally so the only possible next command is
+     scan()</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 530--><text:p text:style-name="First-line-indent">   The red commands needs to be used only once per session. The blue ones should
+be used once or if any changes has occurred on dimdif servers (power cycle for
+example). The purple ones are used to reconfigure chips. The green ones are the
+normal one to start and stop a run. Eventually the black commands are optional, the
+<text:span 
+text:style-name="ecbx-1000">download </text:span>one must be called at least ones to access the DB but is not
+needed in a new session if the dimdb server is alive and already contains the
+state
+</text:p> 
+<!--l. 533--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >3.3    </text:span><t4htlink 
+href="#x1-210003.3" name="x1-210003.3"></t4htlink>Spying with webDid</text:h> 
+
+<!--l. 534--><text:p text:style-name="Text-body">The latest versions of DIM provide a web interface to all DIM servers and clients.
+The server is started with:
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 535--><text:p text:style-name="Preformatted-Text">
+export<text:s/>DIM_DNS_NODE=lyosdhcal11
+<text:line-break/>/opt/dhcal/dimWebDID/webDid
+</text:p>
+<!--l. 540--><text:p text:style-name="First-line-indent">   Then the interface can be accessed via a web browser at address
+http://lyosdhcal11:2500 as seen on figure <t4htlink 
+href="#x1-210011">1<!--tex4ht:ref: webdid --></t4htlink> </text:p> 
+<text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+<!--l. 543--><text:p text:style-name="Text-body"><draw:frame draw:name="./webDid.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/./webDid.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
+--></draw:frame>
+</text:p> 
+<!--l. 544--><text:p text:style-name="Text-body"></text:p> 
+
+<!--l. 544--><text:p text:style-name="Text-body"> 
+<text:span text:style-name="caption" ><text:span text:style-name="caption-title" ><t4htlink 
+ href="#x1-210011" name="x1-210011">Figure<text:s/>1</t4htlink>: </text:span>The web application webDID used to spy DIM services</text:span>
+                                                                  
+
+                                                                  
+   </text:p> 
+<text:p text:style-name="bigskip"></text:p></text:section>
+<!--l. 548--><text:p text:style-name="First-line-indent">   Commands can be sent manually but spying of dynamiclly allocated
+infos (like the DID DATA service) should be avoided since it crashes the
+program.
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >3.4    </text:span><t4htlink 
+href="#x1-220003.4" name="x1-220003.4"></t4htlink>Graphical interface</text:h> 
+
+<!--l. 550--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsubsection--><text:h text:style-name="Heading-4" text:outline-level="4" ><text:span text:style-name="subsubsection" >3.4.1    </text:span><t4htlink 
+href="#x1-230003.4.1" name="x1-230003.4.1"></t4htlink>Starting</text:h> 
+
+                                                                  
+
+                                                                  
+   <!--l. 551--><text:p text:style-name="Preformatted-Text">
+cd<text:s/>SDHCAL/python
+<text:line-break/>python<text:s/>SDaqImpl.py
+</text:p>
+<!--l. 556--><text:p text:style-name="Text-body">This graphical interface is just a user friendly interface to the StartDaq
+package, each button corresponds to the call of one method. The figure <t4htlink 
+href="#x1-230012">2<!--tex4ht:ref: SDaqImpl1 --></t4htlink>,<t4htlink 
+href="#x1-230023">3<!--tex4ht:ref: SDaqImpl2 --></t4htlink>,
+and <t4htlink 
+href="#x1-230034">4<!--tex4ht:ref: SDaqImpl3 --></t4htlink> shows the various panel with the sequence of call of each method.
+</text:p> 
+<text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+<!--l. 559--><text:p text:style-name="Text-body"><draw:frame draw:name="./SDaqImpl1.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/./SDaqImpl1.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
+--></draw:frame>
+</text:p> 
+<!--l. 560--><text:p text:style-name="Text-body"></text:p> 
+
+<!--l. 560--><text:p text:style-name="Text-body"> 
+<text:span text:style-name="caption" ><text:span text:style-name="caption-title" ><t4htlink 
+ href="#x1-230012" name="x1-230012">Figure<text:s/>2</t4htlink>: </text:span>Process control panel. Restart host can be called after createDaq and
+can be called again after a DAQ destroy but must be followed by the step 2,3
+and 4</text:span>
+                                                                  
+
+                                                                  
+   </text:p> 
+<text:p text:style-name="bigskip"></text:p></text:section>
+   <text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+<!--l. 565--><text:p text:style-name="Text-body"><draw:frame draw:name="./SDaqImpl2.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/./SDaqImpl2.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
+--></draw:frame>
+</text:p> 
+<!--l. 566--><text:p text:style-name="Text-body"></text:p> 
+
+<!--l. 566--><text:p text:style-name="Text-body"> 
+<text:span text:style-name="caption" ><text:span text:style-name="caption-title" ><t4htlink 
+ href="#x1-230023" name="x1-230023">Figure<text:s/>3</t4htlink>: </text:span>Daq control panel. Initialise must be called after Destroy. After a
+Stop, Configure (parameter reload) or Start can be called</text:span>
+                                                                  
+
+                                                                  
+   </text:p> 
+<text:p text:style-name="bigskip"></text:p></text:section>
+   <text:section text:name="fig" text:style-name="Figure" ><text:p text:style-name="bigskip"></text:p>
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+<!--l. 571--><text:p text:style-name="Text-body"><draw:frame draw:name="./SDaqImpl3.png" text:anchor-type="as-char" draw:z-index="0" ><draw:image 
+xlink:href="Pictures/./SDaqImpl3.png"  
+xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad" /><!--draw:name="IMG"  
+--></draw:frame>
+</text:p> 
+<!--l. 572--><text:p text:style-name="Text-body"></text:p> 
+
+<!--l. 572--><text:p text:style-name="Text-body"> 
+<text:span text:style-name="caption" ><text:span text:style-name="caption-title" ><t4htlink 
+ href="#x1-230034" name="x1-230034">Figure<text:s/>4</t4htlink>: </text:span>Monitoring Panel. RefreshList gives the list of histograms and access
+to an expanding tree of histograms. Doble-clicked on a histogram to display</text:span>
+                                                                  
+
+                                                                  
+   </text:p> 
+<text:p text:style-name="bigskip"></text:p></text:section>
+   <!--end of subsubsection--><!--end of subsection--><!--end of section--><!--start of section--><text:h text:style-name="Heading-2" text:outline-level="2" ><text:span text:style-name="section" >4    </text:span><t4htlink 
+href="#x1-240004" name="x1-240004"></t4htlink>How to </text:h> 
+
+<!--l. 578--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >4.1    </text:span><t4htlink 
+href="#x1-250004.1" name="x1-250004.1"></t4htlink>Lost connection to lyoilcrpi02</text:h> 
+
+<!--l. 580--><text:p text:style-name="Text-body">If the connection is lost to lyoilcrpi02, first check with a ping that the TCP/IP is not
+answering at all:
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 581--><text:p text:style-name="Preformatted-Text">
+ping<text:s/>lyoilcrpi02
+</text:p>
+<!--l. 585--><text:p text:style-name="First-line-indent">   If no communication is possible go in a browser to http://lyoilcpwr01
+(admin/admin) and power cycle the box. Five minutes later you should be able to
+connect to lyoilcrpi02
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 586--><text:p text:style-name="Preformatted-Text">
+ssh<text:s/>pi@lyoilcrpi02
+</text:p>
+<!--l. 590--><text:p text:style-name="First-line-indent">   then restart the job control on it
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 591--><text:p text:style-name="Preformatted-Text">
+sudo<text:s/>/etc/init.d/dimjcd<text:s/>start
+</text:p>
+<!--l. 596--><text:p text:style-name="First-line-indent">   Now in the home of lyosdhcal11 in python
+                                                                  
+
+                                                                  
+   </text:p> 
+<!--l. 597--><text:p text:style-name="Preformatted-Text">
+import<text:s/>Ldimjc
+<text:line-break/>dsc=Ldimjc.DimJobInterface()
+<text:line-break/>dsc.loadJSON(&#x0022;slow_conf.json&#x0022;)
+<text:line-break/>dsc.clearHostJobs(&#x0022;llyoilcrpi02&#x0022;)
+<text:line-break/>dsc.startJobs(&#x0022;lyoilcrpi02&#x0022;)
+<text:line-break/>dsc.status()
+<text:line-break/>dsc.List()
+<text:line-break/>#<text:s/>you<text:s/>should<text:s/>see<text:s/>the<text:s/>list<text:s/>of<text:s/>process
+<text:line-break/>import<text:s/>LMainSlowControl
+<text:line-break/>l=LMainSlowControl.DimSlowControl(&#x0022;lyosdhcal11&#x0022;)
+<text:line-break/>l.scandns()
+<text:line-break/>l.DS1820SetPeriod(30)
+<text:line-break/>l.DS1820Store(&#x0022;acqilc/RPC_2008@lyosdhcal11:GIFPP2015&#x0022;)
+<text:line-break/>l.OpenGPIO()
+<text:line-break/>l.VMEOn()
+<text:line-break/>l.DIFOn()
+<text:line-break/>#<text:s/>wait<text:s/>1<text:s/>minute
+<text:line-break/>l.VMEOff()
+<text:line-break/>l.VMEOn()
+<text:line-break/>
+</text:p>
+<!--l. 620--><text:p text:style-name="First-line-indent">   Keep this window open.
+</text:p> 
+<!--l. 622--><text:p text:style-name="First-line-indent">   Now you can restart the DAQ graphical interface:
+     </text:p> 
+<text:list text:style-name="Enumerate" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Create DAQ
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Restart Hosts
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Scan DNS
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Download DB (wait 1 min)
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Init Writing
+                                                                  
+
+                                                                  
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >LV On
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Initialise</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 633--><text:p text:style-name="First-line-indent">   After Initialise, log on lyoilcrpi02 and check /var/log/dimccc.log if the last return
+code is -1 that means that the USB communication to the SDCC failed and the
+program exited. Go in the slow control window and repeat the VME Off/On step
+,then repeat the sequence
+</text:p> 
+<!--l. 635--><text:p text:style-name="First-line-indent">
+     </text:p> 
+<text:list text:style-name="Enumerate" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Destroy
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Restart Hosts
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Scan DNS
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Download DB (wait 1 min)
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Init Writing
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >LV On
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Initialise</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 645--><text:p text:style-name="First-line-indent">   The /var/log/dimccc.log should have return code 0 and you can now do your
+run.
+                                                                  
+
+                                                                  
+</text:p> 
+<!--l. 647--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >4.2    </text:span><t4htlink 
+href="#x1-260004.2" name="x1-260004.2"></t4htlink>One DIF is in INIT_FAILED</text:h> 
+
+<!--l. 649--><text:p text:style-name="Text-body">That means that the USB communication cannot be established. It might be due to
+a connection problem (LV or HDMI) but also a SDCC issue (check again
+/var/log/dimccc.log)
+</text:p> 
+<!--l. 651--><text:p text:style-name="Text-body">
+   </text:p> 
+<!--end of subsection--><!--start of subsection--><text:h text:style-name="Heading-3" text:outline-level="3" ><text:span text:style-name="subsection" >4.3    </text:span><t4htlink 
+href="#x1-270004.3" name="x1-270004.3"></t4htlink> One DIF cannot configured</text:h> 
+
+<!--l. 653--><text:p text:style-name="Text-body">Check:
+     </text:p> 
+<!--l. 655--><text:list text:style-name="Itemize" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" >HDMI connection
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" >LV voltage on the DIF (it must be greater than 5 V)
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-itemize" >DIF-ASU connector (LV Off, replug it)</text:p> 
+</text:list-item> 
+</text:list > 
+
+<!--l. 660--><text:p text:style-name="First-line-indent">   If none of this fix works, it means one ASIC is faulty. There is few alternatives
+     </text:p> 
+<text:list text:style-name="Enumerate" > 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Try to run: You&#x2019;re not sure all chips are configured and it may block the
+     trigger
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Keep the chamber in the setup but disable it. Unplug the LV of the DIF
+     </text:p> 
+</text:list-item> 
+
+     <text:list-item>
+     <text:p text:style-name="Inside-enumerate" >Dismount and debug the chamber</text:p> 
+</text:list-item> 
+</text:list > 
+
+   <!--end of subsection--><!--end of section--></office:text></office:body> 
+</office:document-content>
+                                                                  
+
+
