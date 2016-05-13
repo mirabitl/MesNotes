@@ -66,6 +66,28 @@ The software is distributed on github\cite{github}. The master version is downlo
 \section{Library functionnalities}
 \subsection{The Event builder}
 Event building consists of merging various data source that collect event fragment at the same time. Each data source should consequently have a localisation tag and a time tag for each data fragment it provides. This fragment are published by a DimService and is centrally collected to build an event, i.e a collection of data fragment with an identical time tag.
+
+The event builder proposed is not itself distributed, it is unique and so no geographical or time dependant partitionning is available. All data sources are collected by a unique process. It subscribes to all available data source and writes them on reciept in a shared memory. A separate thread scans the memory and build the event, i.e a collection of data buffer from each registered data source with the same time tag. A last thread process completed event and call registered \emph{event processors} that can write event to disk in user defined format. The next sections detail the software tools provided to achieve those tasks.
+\subsection{The buffer structure}
+The \emph{levbdim::buffer} class is a simple data structure that provides space to store the read data (the \emph{payload}) and four tags:
+\begin{itemize}
+\item The \emph{Detector ID}: A four bytes id used to tag different geographical partition (ex. tracker barrel, ECAL end cap...)
+
+\item The \emph{source ID}: A four bytes id characterizing the data source (ex. ADC or TDC number)
+\item The \emph{event number}: A four bytes number of readouts
+ 
+ \item The \emph{bunch crossing number}: an eight bytes number chracterizing the time of the event in clocks count. The clock is the typical clock of the experiment. It may allows a finer events building if needed. It si currently optionnal
+ 
+ \item The \emph{payload}: a bytes array containing detector data for the given \emph{event number} readout. 
+ 
+ \item The \emph{payload size}: the size of the \emph{payload} array.
+\end{itemize}
+
+The payload can be compressed on the fly using the gzip\cite{gzip} library.
+
+Buffer do not need to be allocated by data producers since they are embedded in the datasource class.
+\subsection{The datasource class}
+A \emph{levbdim::datasource} object instantiates a {levbdim::buffer} and creates the associated DimService with the name {\bf /FSM/LEVBDIM/DS-X-Y/DATA}  where X is the detector id and Y the data source one. The buffer has method to be accessed
 \begin{thebibliography}{9}
 
 \bibitem{dim}
@@ -75,6 +97,8 @@ Event building consists of merging various data source that collect event fragme
 \bibitem{mongoose-cpp}
 \emph{https://github.com/Gregwar/mongoose-cpp}
 \bibitem{mongoose}
+\emph{https://github.com/cesanta/mongoose}
+\bibitem{gzip}
 \emph{https://github.com/cesanta/mongoose}
 \end{thebibliography}
 \end{document}
